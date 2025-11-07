@@ -46,7 +46,12 @@ struct MieiPrestitiView: View {
                 }
             }
             .padding()
+            // Platform-specific background color
+            #if os(iOS)
             .background(Color(.systemBackground))
+            #else
+            .background(Color(NSColor.windowBackgroundColor))
+            #endif
             
             Divider()
             
