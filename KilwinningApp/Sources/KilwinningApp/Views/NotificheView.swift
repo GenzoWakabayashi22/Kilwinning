@@ -119,7 +119,7 @@ struct NotificaRow: View {
                     #if os(iOS)
                     .fill(notifica.letto ? Color(.systemGray5) : AppTheme.masonicBlue.opacity(0.2))
                     #else
-                    .fill(notifica.letto ? Color(NSColor.systemGray) : AppTheme.masonicBlue.opacity(0.2))
+                    .fill(notifica.letto ? Color(NSColor.controlBackgroundColor) : AppTheme.masonicBlue.opacity(0.2))
                     #endif
                     .frame(width: 48, height: 48)
                 
