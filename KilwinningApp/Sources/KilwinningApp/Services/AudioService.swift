@@ -7,8 +7,6 @@ class AudioService: ObservableObject {
     @Published var discussioni: [AudioDiscussione] = []
     
     static let shared = AudioService()
-    private let networkService = NetworkService.shared
-    private var useMockData = false
     
     private init() {
         loadMockData()
@@ -18,21 +16,14 @@ class AudioService: ObservableObject {
     
     /// Ottieni tutte le discussioni audio per una tornata
     func fetchDiscussioni(for tornataId: UUID) async -> [AudioDiscussione] {
-        // Note: This requires mapping UUID to Int IDs from the backend
-        // For now, we'll use mock data filtering
-        if useMockData {
-            return discussioni.filter { $0.idTornata == tornataId }
-        }
-        
-        // TODO: Implement proper ID mapping when backend tornata management is in place
+        // TODO: Implementare chiamata reale a backend
+        try? await Task.sleep(nanoseconds: 500_000_000)
         return discussioni.filter { $0.idTornata == tornataId }
     }
     
     /// Ottieni tutte le discussioni audio
     func fetchAllDiscussioni() async {
-        // For now, keep using mock data since we don't have a mapping
-        // between UUID tornata IDs and backend Int IDs
-        // TODO: Implement when backend tornata integration is complete
+        // TODO: Implementare chiamata reale a backend
         try? await Task.sleep(nanoseconds: 500_000_000)
     }
     

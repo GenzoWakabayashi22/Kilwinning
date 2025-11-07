@@ -10,8 +10,6 @@ class DataService: ObservableObject {
     @Published var brothers: [Brother] = []
     
     static let shared = DataService()
-    private let networkService = NetworkService.shared
-    private var useMockData = false
     
     private init() {
         loadMockData()
@@ -20,43 +18,28 @@ class DataService: ObservableObject {
     // MARK: - Tornate
     
     func fetchTornate() async {
-        do {
-            let dtos = try await networkService.fetchTornate()
-            tornate = dtos.compactMap { convertToTornata(from: $0) }
-            useMockData = false
-        } catch {
-            print("Error fetching tornate from API: \(error). Using mock data.")
-            useMockData = true
-            // Mock data already loaded in init
-        }
+        // TODO: Implementare chiamata a backend o CloudKit
+        // Per ora usiamo dati mock
     }
     
     func createTornata(_ tornata: Tornata) async {
-        // Update local state immediately for optimistic UI
         tornate.append(tornata)
         tornate.sort { $0.date > $1.date }
-        
-        // TODO: Sync with backend when tornata creation API is fully implemented
     }
     
     func updateTornata(_ tornata: Tornata) async {
         if let index = tornate.firstIndex(where: { $0.id == tornata.id }) {
             tornate[index] = tornata
         }
-        
-        // TODO: Sync with backend when tornata update API is fully implemented
     }
     
     func deleteTornata(_ tornata: Tornata) async {
         tornate.removeAll { $0.id == tornata.id }
-        
-        // TODO: Sync with backend when tornata deletion API is fully implemented
     }
     
     // MARK: - Presenze
     
     func updatePresence(brotherId: UUID, tornataId: UUID, status: PresenceStatus) async {
-        // Update local state
         if let index = presences.firstIndex(where: { $0.brotherId == brotherId && $0.tornataId == tornataId }) {
             var presence = presences[index]
             presence.status = status
@@ -65,13 +48,6 @@ class DataService: ObservableObject {
         } else {
             let presence = Presence(brotherId: brotherId, tornataId: tornataId, status: status, confirmedAt: Date())
             presences.append(presence)
-        }
-        
-        // Sync with backend if using live data
-        if !useMockData {
-            // Note: This requires mapping UUID to Int IDs from the backend
-            // For now, we'll keep local state only
-            // TODO: Implement proper ID mapping when backend user management is in place
         }
     }
     
@@ -222,45 +198,5 @@ class DataService: ObservableObject {
             pdfURL: "https://example.com/tavole/ricerca_interiore.pdf",
             idTornata: tornata2Id
         ))
-    }
-    
-    // MARK: - DTO Converters
-    
-    private func convertToTornata(from dto: TornataDTO) -> Tornata? {
-        // Parse the date string
-        let dateFormatter = ISO8601DateFormatter()
-        guard let date = dateFormatter.date(from: dto.data_tornata) else {
-            print("Failed to parse date: \(dto.data_tornata)")
-            return nil
-        }
-        
-        // Map tipo to TornataType
-        let type: TornataType
-        switch dto.tipo.lowercased() {
-        case "ordinaria":
-            type = .ordinaria
-        case "cerimonia":
-            type = .cerimonia
-        default:
-            type = .ordinaria
-        }
-        
-        // Map luogo to TornataLocation
-        let location: TornataLocation
-        if dto.luogo.lowercased().contains("tolfa") || dto.luogo.lowercased().contains("tofa") {
-            location = .tofa
-        } else {
-            location = .visita
-        }
-        
-        return Tornata(
-            title: dto.titolo,
-            date: date,
-            type: type,
-            location: location,
-            introducedBy: dto.presentato_da ?? "",
-            hasDinner: dto.ha_agape == 1,
-            notes: dto.note
-        )
     }
 }
