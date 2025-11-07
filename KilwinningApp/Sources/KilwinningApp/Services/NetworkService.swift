@@ -233,11 +233,19 @@ class NetworkService: ObservableObject {
     // MARK: - Helper Methods
     
     private func getConfigValue(for key: String) -> String? {
-        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
-              let config = NSDictionary(contentsOfFile: path) as? [String: Any] else {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist") else {
+            print("Warning: Config.plist not found. Using default API URL.")
             return nil
         }
-        return config[key] as? String
+        guard let config = NSDictionary(contentsOfFile: path) as? [String: Any] else {
+            print("Warning: Could not parse Config.plist. Using default API URL.")
+            return nil
+        }
+        let value = config[key] as? String
+        if value == nil {
+            print("Warning: Key '\(key)' not found in Config.plist. Using default API URL.")
+        }
+        return value
     }
 }
 

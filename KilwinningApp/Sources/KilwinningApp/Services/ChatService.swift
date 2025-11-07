@@ -233,10 +233,15 @@ class ChatService: ObservableObject {
         
         let stato: MessaggioStato = dto.letto == 1 ? .letto : .ricevuto
         
+        // TODO: CRITICAL - Implement proper UUID to Int ID mapping
+        // This creates a random UUID which causes data inconsistency
+        // For now, we log a warning. This should throw an error once user management is in place.
+        print("Warning: Creating MessaggioChat with random UUID. Proper ID mapping needed.")
+        
         return MessaggioChat(
             id: dto.id,
             idChat: dto.id_chat,
-            idMittente: UUID(), // Note: This requires mapping Int to UUID
+            idMittente: UUID(), // FIXME: Requires proper Int->UUID mapping from backend
             testo: dto.testo,
             timestamp: timestamp,
             stato: stato
