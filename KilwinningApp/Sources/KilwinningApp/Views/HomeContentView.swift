@@ -1,0 +1,232 @@
+import SwiftUI
+
+struct HomeContentView: View {
+    let brother: Brother
+    @StateObject private var dataService = DataService.shared
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            // Riquadri principali in 3 colonne
+            #if os(macOS)
+            HStack(alignment: .top, spacing: 15) {
+                GradoRuoloCard(brother: brother)
+                StatistichePresenzeCard(brother: brother)
+                TornatePartecipateCard(brother: brother)
+            }
+            #else
+            VStack(spacing: 15) {
+                GradoRuoloCard(brother: brother)
+                StatistichePresenzeCard(brother: brother)
+                TornatePartecipateCard(brother: brother)
+            }
+            #endif
+            
+            // Prossime tornate
+            ProssimeTornateSection(brother: brother)
+            
+            // Informazioni Loggia
+            InformazioniLoggiaSection()
+        }
+    }
+}
+
+struct GradoRuoloCard: View {
+    let brother: Brother
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "building.columns.fill")
+                    .font(.title)
+                    .foregroundColor(AppTheme.masonicGold)
+                
+                Spacer()
+            }
+            
+            Text("Grado e Ruolo")
+                .font(.headline)
+                .foregroundColor(AppTheme.masonicBlue)
+            
+            Text(brother.role != .none ? brother.role.rawValue : brother.degree.rawValue)
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+            
+            Text(brother.fullName)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .cardStyle()
+    }
+}
+
+struct StatistichePresenzeCard: View {
+    let brother: Brother
+    @StateObject private var dataService = DataService.shared
+    
+    var statistics: PresenceStatistics {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return dataService.calculateStatistics(for: brother.id, year: currentYear)
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "chart.bar.fill")
+                    .font(.title)
+                    .foregroundColor(AppTheme.masonicBlue)
+                
+                Spacer()
+            }
+            
+            Text("Statistiche Presenze")
+                .font(.headline)
+                .foregroundColor(AppTheme.masonicBlue)
+            
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Presenze 2025: \(statistics.presences) su \(statistics.totalTornate)")
+                    .font(.subheadline)
+                
+                if statistics.totalTornate > 0 {
+                    Text("\(statistics.formattedAttendanceRate)")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(AppTheme.masonicGold)
+                }
+                
+                Text("Presenze consecutive: \(statistics.consecutivePresences)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                if statistics.personalRecord > 0 {
+                    Text("Record personale: \(statistics.personalRecord)")
+                        .font(.caption)
+                        .foregroundColor(AppTheme.success)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .cardStyle()
+    }
+}
+
+struct TornatePartecipateCard: View {
+    let brother: Brother
+    @StateObject private var dataService = DataService.shared
+    
+    var recentTornate: [Tornata] {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return dataService.tornate
+            .filter { Calendar.current.component(.year, from: $0.date) == currentYear }
+            .sorted { $0.date > $1.date }
+            .prefix(5)
+            .map { $0 }
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "list.bullet")
+                    .font(.title)
+                    .foregroundColor(AppTheme.masonicBlue)
+                
+                Spacer()
+            }
+            
+            Text("Tornate Partecipate")
+                .font(.headline)
+                .foregroundColor(AppTheme.masonicBlue)
+            
+            if recentTornate.isEmpty {
+                Text("Nessuna tornata registrata")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(recentTornate) { tornata in
+                        TornataRowCompact(tornata: tornata, brother: brother)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .cardStyle()
+    }
+}
+
+struct TornataRowCompact: View {
+    let tornata: Tornata
+    let brother: Brother
+    @StateObject private var dataService = DataService.shared
+    
+    var presenceStatus: PresenceStatus {
+        dataService.getPresenceStatus(brotherId: brother.id, tornataId: tornata.id)
+    }
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(tornata.shortDate)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Text(tornata.title)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                
+                HStack(spacing: 8) {
+                    Label(tornata.type.rawValue, systemImage: tornata.type == .cerimonia ? "star.fill" : "calendar")
+                        .font(.caption)
+                        .foregroundColor(AppTheme.masonicBlue)
+                    
+                    Label(tornata.location.rawValue, systemImage: tornata.location.isHome ? "house.fill" : "arrow.right.circle.fill")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+            }
+            
+            Spacer()
+            
+            PresenceStatusBadge(status: presenceStatus)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+struct PresenceStatusBadge: View {
+    let status: PresenceStatus
+    
+    var color: Color {
+        switch status {
+        case .presente: return AppTheme.success
+        case .assente: return AppTheme.error
+        case .nonConfermato: return AppTheme.warning
+        }
+    }
+    
+    var body: some View {
+        Text(status.rawValue)
+            .font(.caption2)
+            .fontWeight(.medium)
+            .foregroundColor(.white)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(color)
+            .cornerRadius(8)
+    }
+}
+
+#Preview {
+    HomeContentView(brother: Brother(
+        firstName: "Paolo Giulio",
+        lastName: "Gazzano",
+        email: "demo@kilwinning.it",
+        degree: .maestro,
+        role: .venerabileMaestro,
+        isAdmin: true
+    ))
+}
