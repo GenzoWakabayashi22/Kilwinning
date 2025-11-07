@@ -105,9 +105,8 @@ struct PDFViewerView: View {
 }
 
 #if canImport(PDFKit)
-// Platform-specific PDFKit wrapper: uses UIViewRepresentable on iOS and NSViewRepresentable on macOS
 #if os(iOS)
-/// Wrapper for PDFView on iOS
+/// Wrapper for PDFView on iOS - uses UIViewRepresentable
 struct PDFKitView: UIViewRepresentable {
     let url: URL
     
@@ -130,7 +129,7 @@ struct PDFKitView: UIViewRepresentable {
     }
 }
 #else
-/// Wrapper for PDFView on macOS
+/// Wrapper for PDFView on macOS - uses NSViewRepresentable
 struct PDFKitView: NSViewRepresentable {
     let url: URL
     

@@ -72,7 +72,7 @@ struct BibliotecaView: View {
                 #if os(iOS)
                 .background(Color(UIColor.systemGray6))
                 #else
-                .background(Color(nsColor: .windowBackgroundColor))
+                .background(Color(NSColor.windowBackgroundColor))
                 #endif
                 .cornerRadius(10)
                 
@@ -113,7 +113,7 @@ struct BibliotecaView: View {
             #if os(iOS)
             .background(Color(UIColor.systemBackground))
             #else
-            .background(Color(nsColor: .windowBackgroundColor))
+            .background(Color(NSColor.windowBackgroundColor))
             #endif
             
             Divider()
@@ -473,7 +473,7 @@ struct FilterChip: View {
                 #if os(iOS)
                 .background(isSelected ? AppTheme.masonicBlue : Color(UIColor.systemGray6))
                 #else
-                .background(isSelected ? AppTheme.masonicBlue : Color(nsColor: .windowBackgroundColor))
+                .background(isSelected ? AppTheme.masonicBlue : Color(NSColor.windowBackgroundColor))
                 #endif
                 .cornerRadius(16)
         }
