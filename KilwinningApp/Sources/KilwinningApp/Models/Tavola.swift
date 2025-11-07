@@ -16,6 +16,8 @@ struct Tavola: Identifiable, Codable {
     var status: TavolaStatus
     var content: String?
     var createdAt: Date
+    var pdfURL: String? // URL del PDF della tavola
+    var idTornata: UUID? // Tornata in cui è stata letta
     
     var formattedPresentationDate: String? {
         guard let date = presentationDate else { return nil }
@@ -31,7 +33,9 @@ struct Tavola: Identifiable, Codable {
          presentationDate: Date? = nil,
          status: TavolaStatus = .inPreparazione,
          content: String? = nil,
-         createdAt: Date = Date()) {
+         createdAt: Date = Date(),
+         pdfURL: String? = nil,
+         idTornata: UUID? = nil) {
         self.id = id
         self.brotherId = brotherId
         self.title = title
@@ -39,5 +43,7 @@ struct Tavola: Identifiable, Codable {
         self.status = status
         self.content = content
         self.createdAt = createdAt
+        self.pdfURL = pdfURL
+        self.idTornata = idTornata
     }
 }

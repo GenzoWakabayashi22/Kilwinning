@@ -167,6 +167,14 @@ struct TavolaRow: View {
 struct TavolaDetailView: View {
     @Environment(\.dismiss) var dismiss
     let tavola: Tavola
+    @StateObject private var dataService = DataService.shared
+    @State private var showingPDF = false
+    @State private var showingTornata = false
+    
+    var tornata: Tornata? {
+        guard let tornataId = tavola.idTornata else { return nil }
+        return dataService.tornate.first { $0.id == tornataId }
+    }
     
     var body: some View {
         NavigationView {
@@ -194,6 +202,64 @@ struct TavolaDetailView: View {
                     }
                     
                     Divider()
+                    
+                    // PDF Button
+                    if let pdfURL = tavola.pdfURL {
+                        Button(action: { showingPDF = true }) {
+                            HStack {
+                                Image(systemName: "doc.text.fill")
+                                Text("Visualizza PDF")
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(AppTheme.masonicBlue)
+                            .cornerRadius(12)
+                        }
+                        .sheet(isPresented: $showingPDF) {
+                            PDFViewerView(pdfURL: pdfURL, titolo: tavola.title)
+                        }
+                    }
+                    
+                    // Tornata Link
+                    if let tornata = tornata {
+                        Button(action: { showingTornata = true }) {
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack {
+                                    Image(systemName: "waveform")
+                                        .font(.title2)
+                                        .foregroundColor(AppTheme.masonicGold)
+                                    
+                                    Text("Vai alla Discussione Audio")
+                                        .font(.headline)
+                                        .foregroundColor(AppTheme.masonicBlue)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "arrow.right")
+                                        .foregroundColor(.gray)
+                                }
+                                
+                                Text("Tornata: \(tornata.title)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                                
+                                Text(tornata.shortDate)
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding()
+                            .cardStyle()
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .sheet(isPresented: $showingTornata) {
+                            if let brother = AuthenticationService.shared.currentBrother {
+                                TornataDetailView(tornata: tornata, brother: brother)
+                            }
+                        }
+                    }
                     
                     // Contenuto
                     if let content = tavola.content {

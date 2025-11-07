@@ -149,61 +149,14 @@ struct TornataListRow: View {
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showingDetails) {
-            TornataDetailView(tornata: tornata)
-        }
-    }
-}
-
-struct TornataDetailView: View {
-    @Environment(\.dismiss) var dismiss
-    let tornata: Tornata
-    
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    // Titolo e data
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(tornata.title)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(AppTheme.masonicBlue)
-                        
-                        Text(tornata.formattedDate)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Divider()
-                    
-                    // Dettagli completi
-                    VStack(alignment: .leading, spacing: 12) {
-                        DetailRow(icon: "star.fill", label: "Tipo", value: tornata.type.rawValue)
-                        DetailRow(icon: "person.fill", label: "Introduce", value: tornata.introducedBy)
-                        DetailRow(icon: "mappin.circle.fill", label: "Luogo", value: tornata.location.rawValue)
-                        
-                        if tornata.hasDinner {
-                            DetailRow(icon: "fork.knife", label: "Cena", value: "Prevista")
-                        }
-                        
-                        if let notes = tornata.notes {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Note")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                
-                                Text(notes)
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
-                }
-                .padding()
+            if let brother = authService.currentBrother {
+                TornataDetailView(tornata: tornata, brother: brother)
+            } else {
+                // Fallback se l'utente non è autenticato
+                Text("Errore: utente non autenticato")
+                    .foregroundColor(.red)
+                    .padding()
             }
-            .background(AppTheme.background)
-            .navigationBarItems(trailing: Button("Chiudi") {
-                dismiss()
-            })
         }
     }
 }

@@ -33,6 +33,14 @@ struct DashboardView: View {
                             case 3:
                                 TavoleView(brother: authService.currentBrother!)
                             case 4:
+                                BibliotecaView()
+                            case 5:
+                                MieiPrestitiView()
+                            case 6:
+                                ChatView()
+                            case 7:
+                                NotificheView()
+                            case 8:
                                 if authService.currentBrother!.isAdmin {
                                     AdministrationView()
                                 }
@@ -95,6 +103,8 @@ struct BrotherHeaderView: View {
 struct NavigationTabBar: View {
     @Binding var selectedTab: Int
     @StateObject private var authService = AuthenticationService.shared
+    @StateObject private var notificationService = NotificationService.shared
+    @StateObject private var chatService = ChatService.shared
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -115,9 +125,35 @@ struct NavigationTabBar: View {
                     selectedTab = 3
                 }
                 
+                TabButton(title: "Biblioteca", icon: "books.vertical.fill", isSelected: selectedTab == 4) {
+                    selectedTab = 4
+                }
+                
+                TabButton(title: "Prestiti", icon: "book.closed", isSelected: selectedTab == 5) {
+                    selectedTab = 5
+                }
+                
+                TabButtonWithBadge(
+                    title: "Chat",
+                    icon: "message.fill",
+                    isSelected: selectedTab == 6,
+                    badge: authService.currentBrother != nil ? chatService.getUnreadCount(for: authService.currentBrother!.id) : 0
+                ) {
+                    selectedTab = 6
+                }
+                
+                TabButtonWithBadge(
+                    title: "Notifiche",
+                    icon: "bell.fill",
+                    isSelected: selectedTab == 7,
+                    badge: notificationService.nonLette
+                ) {
+                    selectedTab = 7
+                }
+                
                 if authService.currentBrother?.isAdmin == true {
-                    TabButton(title: "Amministrazione", icon: "gear", isSelected: selectedTab == 4) {
-                        selectedTab = 4
+                    TabButton(title: "Admin", icon: "gear", isSelected: selectedTab == 8) {
+                        selectedTab = 8
                     }
                 }
                 
@@ -152,6 +188,42 @@ struct TabButton: View {
             HStack {
                 Image(systemName: icon)
                 Text(title)
+            }
+            .font(.footnote)
+            .fontWeight(.medium)
+            .foregroundColor(isSelected ? AppTheme.white : AppTheme.masonicBlue)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(isSelected ? AppTheme.masonicBlue : AppTheme.white)
+            .cornerRadius(8)
+            .shadow(color: AppTheme.cardShadow, radius: 2, x: 0, y: 1)
+        }
+    }
+}
+
+struct TabButtonWithBadge: View {
+    let title: String
+    let icon: String
+    let isSelected: Bool
+    let badge: Int
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: icon)
+                Text(title)
+                
+                if badge > 0 {
+                    Text("\(badge)")
+                        .font(.caption2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(AppTheme.error)
+                        .cornerRadius(8)
+                }
             }
             .font(.footnote)
             .fontWeight(.medium)
