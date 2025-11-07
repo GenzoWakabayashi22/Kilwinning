@@ -1,4 +1,10 @@
 import SwiftUI
+// Platform-specific imports for PDF handling
+#if os(iOS)
+import UIKit
+#else
+import AppKit
+#endif
 #if canImport(PDFKit)
 import PDFKit
 #endif
@@ -57,7 +63,10 @@ struct PDFViewerView: View {
                 }
             }
             .navigationTitle(titolo)
+            // Platform-specific navigation bar display mode (iOS only)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Chiudi") {
@@ -96,7 +105,9 @@ struct PDFViewerView: View {
 }
 
 #if canImport(PDFKit)
-/// Wrapper per PDFView
+// Platform-specific PDFKit wrapper: uses UIViewRepresentable on iOS and NSViewRepresentable on macOS
+#if os(iOS)
+/// Wrapper for PDFView on iOS
 struct PDFKitView: UIViewRepresentable {
     let url: URL
     
@@ -118,6 +129,30 @@ struct PDFKitView: UIViewRepresentable {
         // Non necessario aggiornare
     }
 }
+#else
+/// Wrapper for PDFView on macOS
+struct PDFKitView: NSViewRepresentable {
+    let url: URL
+    
+    func makeNSView(context: Context) -> PDFView {
+        let pdfView = PDFView()
+        pdfView.autoScales = true
+        pdfView.displayMode = .singlePageContinuous
+        pdfView.displayDirection = .vertical
+        
+        // Carica il PDF dall'URL
+        if let document = PDFDocument(url: url) {
+            pdfView.document = document
+        }
+        
+        return pdfView
+    }
+    
+    func updateNSView(_ nsView: PDFView, context: Context) {
+        // Non necessario aggiornare
+    }
+}
+#endif
 #endif
 
 #Preview {
