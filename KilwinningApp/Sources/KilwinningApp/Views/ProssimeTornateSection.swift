@@ -105,7 +105,7 @@ struct TornataDetailCard: View {
                     .foregroundColor(.gray)
                 
                 HStack(spacing: 12) {
-                    PresenceButton(
+                    ActionButton(
                         title: "Presente",
                         icon: "checkmark.circle.fill",
                         isSelected: selectedStatus == .presente,
@@ -114,7 +114,7 @@ struct TornataDetailCard: View {
                         updatePresence(.presente)
                     }
                     
-                    PresenceButton(
+                    ActionButton(
                         title: "Assente",
                         icon: "xmark.circle.fill",
                         isSelected: selectedStatus == .assente,
@@ -166,29 +166,7 @@ struct DetailRow: View {
     }
 }
 
-struct PresenceButton: View {
-    let title: String
-    let icon: String
-    let isSelected: Bool
-    let color: Color
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                Image(systemName: icon)
-                Text(title)
-            }
-            .font(.subheadline)
-            .fontWeight(.medium)
-            .foregroundColor(isSelected ? .white : color)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(isSelected ? color : color.opacity(0.1))
-            .cornerRadius(8)
-        }
-    }
-}
+// ActionButton and EmptyStateView moved to Utilities/CommonViews.swift to avoid duplication
 
 struct ParticipationSummaryCard: View {
     let totalPresent: Int
@@ -222,24 +200,7 @@ struct ParticipationSummaryCard: View {
     }
 }
 
-struct EmptyStateView: View {
-    let icon: String
-    let message: String
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            Image(systemName: icon)
-                .font(.system(size: 50))
-                .foregroundColor(AppTheme.masonicBlue.opacity(0.5))
-            
-            Text(message)
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 30)
-    }
-}
+// EmptyStateView moved to Utilities/CommonViews.swift to avoid duplication
 
 #Preview {
     ProssimeTornateSection(brother: Brother(

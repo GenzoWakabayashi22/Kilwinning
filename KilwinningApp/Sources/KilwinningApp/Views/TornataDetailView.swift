@@ -267,48 +267,7 @@ struct AudioDiscussioneRow: View {
     }
 }
 
-/// Pulsante per conferma presenza
-struct PresenceButton: View {
-    let status: PresenceStatus
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var color: Color {
-        switch status {
-        case .presente: return AppTheme.success
-        case .assente: return AppTheme.error
-        case .nonConfermato: return AppTheme.warning
-        }
-    }
-    
-    var icon: String {
-        switch status {
-        case .presente: return "checkmark.circle.fill"
-        case .assente: return "xmark.circle.fill"
-        case .nonConfermato: return "questionmark.circle.fill"
-        }
-    }
-    
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                Image(systemName: icon)
-                Text(status.rawValue)
-                    .fontWeight(.semibold)
-            }
-            .font(.subheadline)
-            .foregroundColor(isSelected ? .white : color)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(isSelected ? color : Color(.systemGray6))
-            .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(color, lineWidth: isSelected ? 0 : 2)
-            )
-        }
-    }
-}
+// PresenceButton moved to Utilities/CommonViews.swift to avoid duplication
 
 #Preview {
     TornataDetailView(

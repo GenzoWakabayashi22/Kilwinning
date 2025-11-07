@@ -8,6 +8,9 @@
  * and sets up CORS headers for REST API access.
  */
 
+// Load environment variables from .env file
+require_once __DIR__ . '/load_env.php';
+
 // Set JSON response headers
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -23,14 +26,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Database credentials for Netsons hosting
-// SECURITY NOTE: In production, consider using environment variables
-// or a config file outside the web root to protect credentials.
-// For enhanced security, add a .env file and use getenv() or $_ENV
-$host = "localhost";
-$db_name = "jmvvznbb_tornate_db";
-$username = "jmvvznbb_tornate_user";
-$password = "Puntorosso22";
+// Database credentials - SECURITY: Use environment variables
+// Load from .env file or server environment
+// NEVER commit the actual .env file to version control
+$host = getenv('DB_HOST') ?: 'localhost';
+$db_name = getenv('DB_NAME') ?: 'jmvvznbb_tornate_db';
+$username = getenv('DB_USERNAME') ?: 'jmvvznbb_tornate_user';
+$password = getenv('DB_PASSWORD') ?: '';
+
+// Fallback warning and security check
+if (empty($password)) {
+    $errorMsg = "CRITICAL: DB_PASSWORD not set in environment. Please configure .env file.";
+    error_log($errorMsg);
+    
+    // In production, do not allow connections without password
+    if (getenv('DEBUG_MODE') !== 'true') {
+        http_response_code(500);
+        echo json_encode([
+            "error" => "Database configuration error",
+            "details" => "Missing required credentials. Contact administrator."
+        ]);
+        exit;
+    }
+}
 
 try {
     // Create PDO connection with UTF-8 charset
