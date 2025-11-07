@@ -90,20 +90,108 @@ Gestisce l'autenticazione degli utenti:
 **Sessione:**
 Utilizza `UserDefaults` per persistenza base. Per produzione, considerare Keychain.
 
+### NetworkService
+Gestisce tutte le chiamate HTTP al backend PHP:
+
+**Funzionalità:**
+- Generic async/await HTTP methods (GET, POST, DELETE)
+- Automatic JSON encoding/decoding with ISO8601 date handling
+- Error handling with custom NetworkError enum
+- Configuration via Config.plist
+- DTO models for API communication
+
+**Endpoints supportati:**
+- Tornate: `fetchTornate()`, `fetchTornata(id:)`
+- Presenze: `fetchPresenze(fratelloId:)`, `updatePresenza(...)`
+- Library: `fetchLibri()`, `fetchPrestiti(fratelloId:)`, `createPrestito(...)`, `closePrestito(...)`
+- Audio: `fetchAudioDiscussioni(tornataId:)`
+- Chat: `fetchChatRooms()`, `fetchChatMessages(chatId:)`, `sendMessage(...)`
+
+**Configurazione:**
+L'URL base dell'API è definito in `Config.plist`:
+```xml
+<key>API_BASE_URL</key>
+<string>https://loggiakilwinning.com/api/</string>
+```
+
 ### DataService
-Gestisce tutti i dati dell'app:
+Gestisce tutti i dati dell'app con supporto per live backend e fallback a mock data:
 
 **Funzionalità:**
 - Gestione Tornate (CRUD)
 - Gestione Presenze
 - Calcolo statistiche
 - Gestione Tavole
+- Sincronizzazione con backend via NetworkService
+- Fallback automatico a mock data in caso di errori di rete
 
 **Stato:**
 - `@Published var tornate: [Tornata]`
 - `@Published var presences: [Presence]`
 - `@Published var tavole: [Tavola]`
 - `@Published var brothers: [Brother]`
+
+**Conversione DTO:**
+Il servizio converte automaticamente i DTOs dal backend ai modelli Swift dell'app.
+
+### LibraryService
+Gestisce la biblioteca con integrazione backend:
+
+**Funzionalità:**
+- Fetch libri dal backend con filtri
+- Gestione prestiti con sincronizzazione automatica
+- Fallback a mock data offline
+- Aggiornamento automatico dello stato dei libri
+
+### AudioService
+Gestisce le discussioni audio:
+
+**Funzionalità:**
+- Fetch discussioni audio per tornata
+- Mock data per offline use
+
+### ChatService
+Gestisce il sistema di messaggistica:
+
+**Funzionalità:**
+- Fetch chat rooms dal backend
+- Gestione messaggi real-time
+- Invio messaggi con sincronizzazione
+- Fallback a mock data offline
+
+## Network Layer Architecture
+
+### DTO Models
+Data Transfer Objects per comunicazione con il backend:
+- `TornataDTO`: Rappresentazione tornata dal database
+- `PresenzaDTO`: Dati presenza fratello
+- `LibroDTO`: Informazioni libro
+- `PrestitoDTO`: Dettagli prestito
+- `AudioDiscussioneDTO`: Discussione audio
+- `ChatRoomDTO` / `ChatMessageDTO`: Sistema messaggi
+
+### Error Handling
+```swift
+enum NetworkError: LocalizedError {
+    case invalidURL
+    case invalidResponse
+    case httpError(statusCode: Int)
+    case decodingError(Error)
+    case encodingError(Error)
+    case noData
+}
+```
+
+Tutti i servizi implementano try-catch con fallback a mock data:
+```swift
+do {
+    let data = try await networkService.fetch()
+    // Use live data
+} catch {
+    print("Error: \(error). Using mock data.")
+    // Use mock data
+}
+```
 
 ## Views Principali
 
@@ -221,39 +309,144 @@ Ogni view include SwiftUI preview per sviluppo rapido:
 
 ## Integrazione Backend
 
-### Placeholder per API Calls
+### REST API Backend
 
-I services contengono placeholder per chiamate backend:
+L'app si connette a un backend PHP MySQL per tutti i dati live:
 
+**Base URL:** `https://loggiakilwinning.com/api/`  
+Configurato in: `Config.plist`
+
+### API Endpoints
+
+#### Tornate
 ```swift
-// TODO: Implementare chiamata reale a backend
-try await Task.sleep(nanoseconds: 1_000_000_000)
+// GET /api/tornate.php
+let tornate = try await networkService.fetchTornate()
+
+// GET /api/tornate.php?id=1
+let tornata = try await networkService.fetchTornata(id: 1)
 ```
 
-### CloudKit Integration (Futuro)
-
-```swift
-import CloudKit
-
-let container = CKContainer.default()
-let database = container.publicCloudDatabase
-
-// Fetch, Save, Update, Delete operations
+**Response Example:**
+```json
+{
+  "success": true,
+  "data": [{
+    "id": 1,
+    "titolo": "Il sentiero della saggezza",
+    "data_tornata": "2025-11-25T19:30:00Z",
+    "tipo": "Ordinaria",
+    "luogo": "Nostra Loggia - Tolfa",
+    "presentato_da": "Fr. Marco Rossi",
+    "ha_agape": 1,
+    "note": null
+  }]
+}
 ```
 
-### Firebase Integration (Alternativa)
+#### Presenze
+```swift
+// GET /api/presenze.php?id_fratello=1
+let presenze = try await networkService.fetchPresenze(fratelloId: 1)
+
+// POST /api/presenze.php
+try await networkService.updatePresenza(
+    fratelloId: 1,
+    tornataId: 5,
+    stato: "Presente"
+)
+```
+
+#### Library
+```swift
+// GET /api/libri.php
+let libri = try await networkService.fetchLibri()
+
+// GET /api/prestiti.php?id_fratello=1
+let prestiti = try await networkService.fetchPrestiti(fratelloId: 1)
+
+// POST /api/prestiti.php
+try await networkService.createPrestito(libroId: 3, fratelloId: 1)
+
+// POST /api/prestiti.php (close loan)
+try await networkService.closePrestito(prestitoId: 10)
+```
+
+#### Audio Discussions
+```swift
+// GET /api/audio_discussioni.php?id_tornata=1
+let audio = try await networkService.fetchAudioDiscussioni(tornataId: 1)
+```
+
+#### Chat
+```swift
+// GET /api/chat.php?rooms=1
+let rooms = try await networkService.fetchChatRooms()
+
+// GET /api/chat.php?id_chat=1
+let messages = try await networkService.fetchChatMessages(chatId: 1)
+
+// POST /api/chat.php
+try await networkService.sendMessage(
+    chatId: 1,
+    mittenteId: 1,
+    testo: "Messaggio di test"
+)
+```
+
+### Offline Support
+
+Tutti i servizi implementano fallback automatico a mock data:
 
 ```swift
-import FirebaseAuth
-import FirebaseFirestore
-
-// Auth
-Auth.auth().signIn(withEmail: email, password: password)
-
-// Firestore
-let db = Firestore.firestore()
-db.collection("tornate").getDocuments()
+func fetchTornate() async {
+    do {
+        let dtos = try await networkService.fetchTornate()
+        tornate = dtos.compactMap { convertToTornata(from: $0) }
+        useMockData = false
+    } catch {
+        print("Error fetching from API: \(error). Using mock data.")
+        useMockData = true
+        // Mock data already loaded in init
+    }
+}
 ```
+
+### Data Conversion
+
+I DTOs dal backend vengono convertiti ai modelli Swift:
+
+```swift
+private func convertToTornata(from dto: TornataDTO) -> Tornata? {
+    let dateFormatter = ISO8601DateFormatter()
+    guard let date = dateFormatter.date(from: dto.data_tornata) else {
+        return nil
+    }
+    
+    return Tornata(
+        title: dto.titolo,
+        date: date,
+        type: dto.tipo == "Ordinaria" ? .ordinaria : .cerimonia,
+        location: dto.luogo.contains("Tolfa") ? .tofa : .visita,
+        introducedBy: dto.presentato_da ?? "",
+        hasDinner: dto.ha_agape == 1,
+        notes: dto.note
+    )
+}
+```
+
+### Authentication & Authorization
+
+**Current Status:** Not yet implemented  
+**Future Implementation:** JWT tokens or session-based auth with PHP backend
+
+### Known Limitations
+
+1. **UUID to Int ID Mapping:** L'app usa UUID per gli ID locali, ma il backend usa Int. Richiede un sistema di mapping quando la gestione utenti sarà implementata.
+
+2. **Real-time Updates:** Le chat non sono real-time. Implementazione futura: WebSockets o polling.
+
+3. **File Uploads:** Audio e PDF uploads non ancora implementati nel NetworkService.
 
 ## Performance
 
