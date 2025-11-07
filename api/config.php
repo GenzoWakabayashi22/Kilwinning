@@ -12,8 +12,9 @@
 header("Content-Type: application/json; charset=UTF-8");
 
 // CORS headers for cross-origin requests
+// Note: In production, replace * with specific domain for better security
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Handle preflight OPTIONS requests
@@ -23,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Database credentials for Netsons hosting
+// SECURITY NOTE: In production, consider using environment variables
+// or a config file outside the web root to protect credentials.
+// For enhanced security, add a .env file and use getenv() or $_ENV
 $host = "localhost";
 $db_name = "jmvvznbb_tornate_db";
 $username = "jmvvznbb_tornate_user";

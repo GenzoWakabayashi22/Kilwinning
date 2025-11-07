@@ -8,7 +8,8 @@
  * Endpoints:
  * - GET  ?rooms=1           : Get all chat rooms
  * - GET  ?id_chat=XX        : Get all messages for specific chat room
- * - POST (body JSON)         : Send new message
+ * - POST (body JSON)         : Send new message or create chat room
+ * - PUT  (body JSON)         : Mark message as read
  * 
  * Chat Room Fields: id, nome_chat, descrizione, data_creazione
  * Message Fields: id, id_chat, id_mittente, testo, data_invio, letto

@@ -9,7 +9,7 @@ AddDefaultCharset UTF-8
 
 # Allow CORS from any origin
 Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods "GET, POST, DELETE, OPTIONS"
+Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
 Header set Access-Control-Allow-Headers "Content-Type, Authorization"
 
 # Handle OPTIONS requests for CORS preflight
