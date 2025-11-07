@@ -40,8 +40,12 @@ struct PasswordResetView: View {
                             .foregroundColor(AppTheme.masonicBlue)
                         TextField("Email", text: $email)
                             .textContentType(.emailAddress)
-                            .autocapitalization(.none)
+                            // macOS-compatible: .textInputAutocapitalization instead of .autocapitalization
+                            .textInputAutocapitalization(.never)
+                            // iOS-only modifier: keyboardType not available on macOS
+                            #if os(iOS)
                             .keyboardType(.emailAddress)
+                            #endif
                             .textFieldStyle(CustomTextFieldStyle())
                     }
                     .padding(.horizontal, 30)

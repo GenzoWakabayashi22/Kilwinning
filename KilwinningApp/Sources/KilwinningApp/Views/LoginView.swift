@@ -49,8 +49,12 @@ struct LoginView: View {
                                 .frame(width: 25)
                             TextField("Email o nome utente", text: $email)
                                 .textContentType(.emailAddress)
-                                .autocapitalization(.none)
+                                // macOS-compatible: .textInputAutocapitalization instead of .autocapitalization
+                                .textInputAutocapitalization(.never)
+                                // iOS-only modifier: keyboardType not available on macOS
+                                #if os(iOS)
                                 .keyboardType(.emailAddress)
+                                #endif
                         }
                         .padding()
                         .background(AppTheme.white)

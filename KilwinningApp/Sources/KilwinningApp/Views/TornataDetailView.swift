@@ -49,7 +49,12 @@ struct TornataDetailView: View {
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
+                                // Platform-specific background color
+                                #if os(iOS)
                                 .background(Color(.systemGray))
+                                #else
+                                .background(Color(NSColor.systemGray))
+                                #endif
                                 .cornerRadius(8)
                         }
                     }
@@ -85,7 +90,12 @@ struct TornataDetailView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.primary)
                                     .padding()
+                                    // Platform-specific background color
+                                    #if os(iOS)
                                     .background(Color(.systemGray6))
+                                    #else
+                                    .background(Color(NSColor.controlBackgroundColor))
+                                    #endif
                                     .cornerRadius(8)
                             }
                         }
@@ -177,7 +187,10 @@ struct TornataDetailView: View {
                 .padding()
             }
             .navigationTitle("Dettagli Tornata")
+            // Platform-specific navigation bar display mode (iOS only)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Chiudi") {
@@ -262,7 +275,12 @@ struct AudioDiscussioneRow: View {
                 .foregroundColor(.gray)
         }
         .padding()
+        // Platform-specific background color
+        #if os(iOS)
         .background(Color(.systemGray6))
+        #else
+        .background(Color(NSColor.controlBackgroundColor))
+        #endif
         .cornerRadius(12)
     }
 }
