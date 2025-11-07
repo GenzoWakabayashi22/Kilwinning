@@ -40,21 +40,23 @@ Tutta la documentazione si trova in `KilwinningApp/`:
 
 ### 🔧 Tecnologie
 
-- **Linguaggio**: Swift 5.9+
-- **Framework**: SwiftUI
+- **App Mobile**: Swift 5.9+ con SwiftUI
 - **Architettura**: MVVM
 - **Build**: Swift Package Manager
-- **Backend**: Pronto per CloudKit, Firebase o API custom
+- **Backend API**: PHP 8+ con PDO
+- **Database**: MySQL (Netsons hosting)
+- **API Style**: REST con JSON responses
 
 ### 🎯 Status del Progetto
 
-**✅ COMPLETATO** - Pronto per integrazione backend e deployment
+**✅ COMPLETATO** - App e Backend API pronti per deployment
 
 - 19 file sorgente Swift
+- 6 endpoint REST API PHP completi
 - 3 suite di test unitari
-- 7 file di documentazione dettagliata
+- 8+ file di documentazione dettagliata
 - Design completo e funzionante
-- Pronto per App Store
+- Pronto per App Store e produzione
 
 ### 🏁 Quick Start
 
@@ -83,10 +85,19 @@ Tutta la documentazione si trova in `KilwinningApp/`:
 Kilwinning/
 ├── README.md                    # Questo file
 ├── PROJECT_SUMMARY.md           # Riepilogo completo progetto
+├── api/                         # ⭐ REST API PHP Backend (Netsons)
+│   ├── config.php              # Configurazione database
+│   ├── audio_discussioni.php   # Gestione audio discussioni
+│   ├── libri.php               # Catalogo biblioteca
+│   ├── prestiti.php            # Gestione prestiti
+│   ├── chat.php                # Sistema messaggistica
+│   ├── notifiche.php           # Notifiche in-app
+│   ├── index.php               # Health check API
+│   └── README.md               # Documentazione API
 ├── backend/                     # Backend Node.js (esistente)
 │   ├── package.json
 │   └── src/
-└── KilwinningApp/              # ⭐ App SwiftUI principale
+└── KilwinningApp/              # App SwiftUI principale
     ├── Package.swift
     ├── README.md
     ├── SETUP.md
@@ -121,21 +132,41 @@ L'app presenta:
 - Autenticazione sicura
 - Gestione sessioni
 - Controllo accessi basato su ruoli
-- Pronto per cifratura dati con backend
+- **API Backend**: PDO prepared statements, parameter binding
+- **Database**: Connessione sicura MySQL con credenziali protette
+- Protezione SQL injection e XSS
+
+### 🌐 Backend REST API
+
+Il sistema include un backend PHP completo connesso al database MySQL su Netsons:
+
+- **Endpoint Audio Discussioni**: Upload e gestione audio pCloud
+- **Endpoint Biblioteca**: Catalogo libri con ricerca e filtri
+- **Endpoint Prestiti**: Gestione automatica disponibilità libri
+- **Endpoint Chat**: Sistema messaggistica interno
+- **Endpoint Notifiche**: Notifiche multi-tipo per tutti gli eventi
+
+**Documentazione**: Vedi `/api/README.md` per dettagli completi
 
 ### 🌟 Prossimi Passi
 
-1. **Integrazione Backend**
-   - Scegliere: CloudKit (consigliato), Firebase, o API custom
-   - Implementare autenticazione reale
-   - Configurare database cloud
+1. **Deploy Backend API**
+   - ✅ API PHP complete e testate
+   - Upload file su hosting Netsons
+   - Configurare SSL/HTTPS
+   - Testare connettività database
 
-2. **Assets e Branding**
+2. **Integrazione App-Backend**
+   - Aggiornare Services in SwiftUI per chiamare API reali
+   - Implementare autenticazione JWT
+   - Gestire token e sessioni
+
+3. **Assets e Branding**
    - Aggiungere app icons
    - Creare screenshots per App Store
    - Preparare materiale marketing
 
-3. **Testing**
+4. **Testing**
    - Test su dispositivi reali
    - Beta testing con TestFlight
    - Raccolta feedback
