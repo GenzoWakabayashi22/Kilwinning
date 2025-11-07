@@ -8,6 +8,8 @@ class ChatService: ObservableObject {
     @Published var messaggi: [MessaggioChat] = []
     
     static let shared = ChatService()
+    private let networkService = NetworkService.shared
+    private var useMockData = false
     
     private init() {
         loadMockData()
@@ -17,15 +19,36 @@ class ChatService: ObservableObject {
     
     /// Ottieni tutte le chat rooms
     func fetchChatRooms() async {
-        // TODO: Implementare chiamata reale a backend o WebSocket
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        do {
+            let dtos = try await networkService.fetchChatRooms()
+            chatRooms = dtos.compactMap { convertToChatRoom(from: $0) }
+            useMockData = false
+        } catch {
+            print("Error fetching chat rooms from API: \(error). Using mock data.")
+            useMockData = true
+            // Mock data already loaded in init
+        }
     }
     
     /// Ottieni i messaggi di una chat
     func fetchMessaggi(for chatId: Int) async -> [MessaggioChat] {
-        // TODO: Implementare chiamata reale a backend
-        try? await Task.sleep(nanoseconds: 500_000_000)
-        return messaggi.filter { $0.idChat == chatId }.sorted { $0.timestamp < $1.timestamp }
+        if useMockData {
+            return messaggi.filter { $0.idChat == chatId }.sorted { $0.timestamp < $1.timestamp }
+        }
+        
+        do {
+            let dtos = try await networkService.fetchChatMessages(chatId: chatId)
+            let messages = dtos.compactMap { convertToMessaggioChat(from: $0) }
+            
+            // Update local cache
+            messaggi.removeAll { $0.idChat == chatId }
+            messaggi.append(contentsOf: messages)
+            
+            return messages.sorted { $0.timestamp < $1.timestamp }
+        } catch {
+            print("Error fetching messages from API: \(error). Using mock data.")
+            return messaggi.filter { $0.idChat == chatId }.sorted { $0.timestamp < $1.timestamp }
+        }
     }
     
     /// Ottieni il numero di messaggi non letti
@@ -54,23 +77,47 @@ class ChatService: ObservableObject {
     
     /// Invia un messaggio
     func inviaMessaggio(chatId: Int, mittente: UUID, testo: String) async {
-        // TODO: Implementare chiamata reale a backend o WebSocket
-        let newId = (messaggi.map { $0.id }.max() ?? 0) + 1
-        let messaggio = MessaggioChat(
-            id: newId,
-            idChat: chatId,
-            idMittente: mittente,
-            testo: testo,
-            timestamp: Date(),
-            stato: .inviato
-        )
-        
-        messaggi.append(messaggio)
-        
-        // Aggiorna la chat room
-        if let index = chatRooms.firstIndex(where: { $0.id == chatId }) {
-            chatRooms[index].ultimoMessaggio = testo
-            chatRooms[index].ultimoAggiornamento = Date()
+        if useMockData {
+            // Mock implementation
+            let newId = (messaggi.map { $0.id }.max() ?? 0) + 1
+            let messaggio = MessaggioChat(
+                id: newId,
+                idChat: chatId,
+                idMittente: mittente,
+                testo: testo,
+                timestamp: Date(),
+                stato: .inviato
+            )
+            
+            messaggi.append(messaggio)
+            
+            // Aggiorna la chat room
+            if let index = chatRooms.firstIndex(where: { $0.id == chatId }) {
+                chatRooms[index].ultimoMessaggio = testo
+                chatRooms[index].ultimoAggiornamento = Date()
+            }
+        } else {
+            do {
+                // Note: This requires mapping UUID to Int IDs from the backend
+                // For now, we'll use a placeholder ID
+                let _ = try await networkService.sendMessage(chatId: chatId, mittenteId: 1, testo: testo)
+                
+                // Refresh messages
+                let _ = await fetchMessaggi(for: chatId)
+            } catch {
+                print("Error sending message: \(error)")
+                // Fall back to local state update
+                let newId = (messaggi.map { $0.id }.max() ?? 0) + 1
+                let messaggio = MessaggioChat(
+                    id: newId,
+                    idChat: chatId,
+                    idMittente: mittente,
+                    testo: testo,
+                    timestamp: Date(),
+                    stato: .inviato
+                )
+                messaggi.append(messaggio)
+            }
         }
     }
     
@@ -148,5 +195,51 @@ class ChatService: ObservableObject {
                 stato: .ricevuto
             )
         ]
+    }
+    
+    // MARK: - DTO Converters
+    
+    private func convertToChatRoom(from dto: ChatRoomDTO) -> ChatRoom? {
+        let dateFormatter = ISO8601DateFormatter()
+        guard let dataCreazione = dateFormatter.date(from: dto.data_creazione) else {
+            print("Failed to parse date: \(dto.data_creazione)")
+            return nil
+        }
+        
+        let ultimoAggiornamento: Date
+        if let ultimoMsg = dto.ultimo_messaggio,
+           let date = dateFormatter.date(from: ultimoMsg) {
+            ultimoAggiornamento = date
+        } else {
+            ultimoAggiornamento = dataCreazione
+        }
+        
+        return ChatRoom(
+            id: dto.id,
+            titolo: dto.nome_chat,
+            tipo: .gruppo, // Default to gruppo, can be enhanced later
+            ultimoMessaggio: dto.ultimo_messaggio ?? "",
+            ultimoAggiornamento: ultimoAggiornamento,
+            nonLetti: 0 // This would need additional API support to track per-user
+        )
+    }
+    
+    private func convertToMessaggioChat(from dto: ChatMessageDTO) -> MessaggioChat? {
+        let dateFormatter = ISO8601DateFormatter()
+        guard let timestamp = dateFormatter.date(from: dto.data_invio) else {
+            print("Failed to parse date: \(dto.data_invio)")
+            return nil
+        }
+        
+        let stato: MessaggioStato = dto.letto == 1 ? .letto : .ricevuto
+        
+        return MessaggioChat(
+            id: dto.id,
+            idChat: dto.id_chat,
+            idMittente: UUID(), // Note: This requires mapping Int to UUID
+            testo: dto.testo,
+            timestamp: timestamp,
+            stato: stato
+        )
     }
 }

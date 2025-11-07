@@ -8,6 +8,8 @@ class LibraryService: ObservableObject {
     @Published var prestiti: [Prestito] = []
     
     static let shared = LibraryService()
+    private let networkService = NetworkService.shared
+    private var useMockData = false
     
     private init() {
         loadMockData()
@@ -17,8 +19,15 @@ class LibraryService: ObservableObject {
     
     /// Ottieni tutti i libri
     func fetchLibri() async {
-        // TODO: Implementare chiamata reale a backend
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        do {
+            let dtos = try await networkService.fetchLibri()
+            libri = dtos.map { convertToLibro(from: $0) }
+            useMockData = false
+        } catch {
+            print("Error fetching libri from API: \(error). Using mock data.")
+            useMockData = true
+            // Mock data already loaded in init
+        }
     }
     
     /// Cerca libri per titolo, autore o categoria
@@ -76,7 +85,6 @@ class LibraryService: ObservableObject {
     
     /// Richiedi un prestito
     func richediPrestito(libroId: Int, fratelloId: UUID) async throws {
-        // TODO: Implementare chiamata reale a backend
         guard let index = libri.firstIndex(where: { $0.id == libroId }) else {
             throw LibraryError.libroNonTrovato
         }
@@ -85,26 +93,41 @@ class LibraryService: ObservableObject {
             throw LibraryError.libroNonDisponibile
         }
         
-        // Crea il prestito
-        let newId = (prestiti.map { $0.id }.max() ?? 0) + 1
-        let prestito = Prestito(
-            id: newId,
-            idLibro: libroId,
-            idFratello: fratelloId,
-            dataInizio: Date(),
-            dataFine: nil,
-            stato: .attivo
-        )
-        
-        prestiti.append(prestito)
-        
-        // Aggiorna stato del libro
-        libri[index].stato = .inPrestito
+        // Try to create on backend if using live data
+        if !useMockData {
+            do {
+                // Note: This requires mapping UUID to Int IDs from the backend
+                // For now, we'll use a placeholder ID
+                let _ = try await networkService.createPrestito(libroId: libroId, fratelloId: 1)
+                
+                // Update local state
+                libri[index].stato = .inPrestito
+                
+                // Fetch updated prestiti
+                // TODO: Implement proper ID mapping when backend user management is in place
+            } catch {
+                print("Error creating prestito on backend: \(error)")
+                throw error
+            }
+        } else {
+            // Mock implementation
+            let newId = (prestiti.map { $0.id }.max() ?? 0) + 1
+            let prestito = Prestito(
+                id: newId,
+                idLibro: libroId,
+                idFratello: fratelloId,
+                dataInizio: Date(),
+                dataFine: nil,
+                stato: .attivo
+            )
+            
+            prestiti.append(prestito)
+            libri[index].stato = .inPrestito
+        }
     }
     
     /// Restituisci un libro
     func restituisciLibro(prestitoId: Int) async throws {
-        // TODO: Implementare chiamata reale a backend
         guard let prestitoIndex = prestiti.firstIndex(where: { $0.id == prestitoId }) else {
             throw LibraryError.prestitoNonTrovato
         }
@@ -114,12 +137,25 @@ class LibraryService: ObservableObject {
             throw LibraryError.libroNonTrovato
         }
         
-        // Aggiorna il prestito
-        prestiti[prestitoIndex].dataFine = Date()
-        prestiti[prestitoIndex].stato = .concluso
-        
-        // Aggiorna stato del libro
-        libri[libroIndex].stato = .disponibile
+        // Try to close on backend if using live data
+        if !useMockData {
+            do {
+                let _ = try await networkService.closePrestito(prestitoId: prestitoId)
+                
+                // Update local state
+                prestiti[prestitoIndex].dataFine = Date()
+                prestiti[prestitoIndex].stato = .concluso
+                libri[libroIndex].stato = .disponibile
+            } catch {
+                print("Error closing prestito on backend: \(error)")
+                throw error
+            }
+        } else {
+            // Mock implementation
+            prestiti[prestitoIndex].dataFine = Date()
+            prestiti[prestitoIndex].stato = .concluso
+            libri[libroIndex].stato = .disponibile
+        }
     }
     
     // MARK: - Mock Data
@@ -167,6 +203,23 @@ class LibraryService: ObservableObject {
                 stato: .attivo
             )
         ]
+    }
+    
+    // MARK: - DTO Converters
+    
+    private func convertToLibro(from dto: LibroDTO) -> Libro {
+        let stato: LibroStato = dto.stato.lowercased().contains("prestito") ? .inPrestito : .disponibile
+        
+        return Libro(
+            id: dto.id,
+            titolo: dto.titolo,
+            autore: dto.autore,
+            anno: dto.anno,
+            categoria: dto.categoria,
+            codiceArchivio: dto.codice_archivio,
+            stato: stato,
+            copertinaURL: dto.copertina_url
+        )
     }
 }
 
