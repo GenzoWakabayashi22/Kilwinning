@@ -132,8 +132,10 @@ class DataService: ObservableObject {
         dateComponents.hour = 19
         dateComponents.minute = 30
         
+        let tornata1Id = UUID()
         if let date1 = calendar.date(from: dateComponents) {
             tornate.append(Tornata(
+                id: tornata1Id,
                 title: "Il sentiero della saggezza",
                 date: date1,
                 type: .ordinaria,
@@ -144,8 +146,10 @@ class DataService: ObservableObject {
         
         dateComponents.month = 12
         dateComponents.day = 10
+        let tornata2Id = UUID()
         if let date2 = calendar.date(from: dateComponents) {
             tornate.append(Tornata(
+                id: tornata2Id,
                 title: "La ricerca della verità",
                 date: date2,
                 type: .ordinaria,
@@ -165,5 +169,30 @@ class DataService: ObservableObject {
                 introducedBy: "Ven.mo Maestro"
             ))
         }
+        
+        // Aggiungi tavole di esempio con PDF e collegamento alle tornate
+        // Usa l'ID del fratello demo se disponibile
+        let demoFratelloId = UUID() // In produzione questo sarà l'ID del fratello loggato
+        
+        tavole.append(Tavola(
+            brotherId: demoFratelloId,
+            title: "Il Simbolismo della Squadra e del Compasso",
+            presentationDate: dateComponents.month == 12 && dateComponents.day == 10 ? 
+                calendar.date(from: dateComponents) : Date(),
+            status: .completata,
+            content: "Approfondimento sul significato simbolico degli strumenti del Libero Muratore.",
+            pdfURL: "https://example.com/tavole/simbolismo_squadra_compasso.pdf",
+            idTornata: tornata1Id
+        ))
+        
+        tavole.append(Tavola(
+            brotherId: demoFratelloId,
+            title: "La Ricerca Interiore nel Percorso Massonico",
+            presentationDate: nil,
+            status: .programmato,
+            content: "Studio sul cammino di perfezionamento personale.",
+            pdfURL: "https://example.com/tavole/ricerca_interiore.pdf",
+            idTornata: tornata2Id
+        ))
     }
 }

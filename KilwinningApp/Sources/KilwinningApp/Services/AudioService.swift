@@ -53,7 +53,38 @@ class AudioService: ObservableObject {
     // MARK: - Mock Data
     
     private func loadMockData() {
-        // Dati di esempio vuoti - saranno popolati quando si collegano le tornate
-        discussioni = []
+        // Dati di esempio - saranno popolati quando si collegano le tornate
+        // Aggiungi alcune discussioni di esempio
+        let tornataId = UUID() // Questo dovrebbe corrispondere a una tornata reale in produzione
+        
+        discussioni = [
+            AudioDiscussione(
+                id: 1,
+                idTornata: tornataId,
+                fratelloIntervento: "Fr. Marco Rossi",
+                titoloIntervento: "Riflessioni sul simbolismo della Squadra",
+                durata: "12:45",
+                audioURL: "https://pcloud.com/audio/discussione1.mp3",
+                dataUpload: Calendar.current.date(byAdding: .day, value: -5, to: Date())!
+            ),
+            AudioDiscussione(
+                id: 2,
+                idTornata: tornataId,
+                fratelloIntervento: "Fr. Giuseppe Bianchi",
+                titoloIntervento: "Il Compasso e la misura dell'universo",
+                durata: "18:30",
+                audioURL: "https://pcloud.com/audio/discussione2.mp3",
+                dataUpload: Calendar.current.date(byAdding: .day, value: -5, to: Date())!
+            ),
+            AudioDiscussione(
+                id: 3,
+                idTornata: tornataId,
+                fratelloIntervento: "Fr. Andrea Verdi",
+                titoloIntervento: "L'equilibrio tra materia e spirito",
+                durata: "15:20",
+                audioURL: "https://pcloud.com/audio/discussione3.mp3",
+                dataUpload: Calendar.current.date(byAdding: .day, value: -4, to: Date())!
+            )
+        ]
     }
 }
