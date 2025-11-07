@@ -128,6 +128,13 @@
     "swift-dependencies": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.swiftdeps",
     "diagnostics": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.dia"
   },
+  "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/CommonViews.swift": {
+    "dependencies": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.d",
+    "object": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.swift.o",
+    "swiftmodule": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews~partial.swiftmodule",
+    "swift-dependencies": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.swiftdeps",
+    "diagnostics": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.dia"
+  },
   "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift": {
     "dependencies": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.d",
     "object": "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o",

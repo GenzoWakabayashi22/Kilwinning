@@ -100,6 +100,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/CommonViews.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift"
         },
         {
@@ -201,6 +205,7 @@
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LibraryService.swift.o",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificationService.swift.o",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.swift.o",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioPlayerView.swift.o",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/BibliotecaView.swift.o",
@@ -329,6 +334,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o"
         },
         {
@@ -424,6 +433,7 @@
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/CommonViews.swift",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift",
         "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift",
@@ -766,6 +776,7 @@
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift",
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift",
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/CommonViews.swift",
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift",
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift",
       "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift",
@@ -1113,6 +1124,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/CommonViews.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift"
         },
         {
@@ -1268,6 +1283,10 @@
         {
           "kind" : "file",
           "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/CommonViews.swift.o"
         },
         {
           "kind" : "file",
