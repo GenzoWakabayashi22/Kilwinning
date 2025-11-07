@@ -1,0 +1,20 @@
+{
+  "name": "kilwinning-backend",
+  "version": "1.0.0",
+  "description": "Backend per l'app di gestione loggia",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.0.3",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "author": "GenzoWakabayashi22",
+  "license": "MIT"
+}
