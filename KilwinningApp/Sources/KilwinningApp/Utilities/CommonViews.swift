@@ -2,6 +2,9 @@ import SwiftUI
 
 // MARK: - Shared UI Components
 // Componenti UI comuni riutilizzabili in tutta l'app
+//
+// NOTA: PresenceButton richiede PresenceStatus enum dal modulo Models.
+// Assicurarsi che il modello Presence.swift sia accessibile quando si usa PresenceButton.
 
 /// Vista per mostrare una riga informativa con label e valore opzionale
 struct InfoRow: View {

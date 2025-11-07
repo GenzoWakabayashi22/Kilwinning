@@ -20,8 +20,10 @@ Le credenziali sono state migrate a variabili d'ambiente. Ora è necessario comp
 # Esempio: generare una password casuale di 20+ caratteri
 ```
 
-**Password attuale compromessa**: `Puntorosso22`  
+**Password attuale compromessa**: `[REDACTED - was exposed in git history]`  
 **Nuova password**: `[GENERA UNA PASSWORD SICURA]`
+
+**IMPORTANTE**: La vecchia password era `Punto****22` ed è stata esposta nel repository pubblico. Deve essere cambiata immediatamente.
 
 Usa un generatore di password come:
 - https://passwordsgenerator.net/
@@ -177,7 +179,7 @@ curl -X GET http://localhost/api/index.php
 - [ ] Test di connessione API superato
 - [ ] Backup della nuova password in un password manager
 - [ ] Documentazione password condivisa solo con amministratori autorizzati
-- [ ] Vecchia password `Puntorosso22` non più valida
+- [ ] Vecchia password non più valida (iniziava con "Punto...")
 
 ---
 

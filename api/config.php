@@ -34,9 +34,20 @@ $db_name = getenv('DB_NAME') ?: 'jmvvznbb_tornate_db';
 $username = getenv('DB_USERNAME') ?: 'jmvvznbb_tornate_user';
 $password = getenv('DB_PASSWORD') ?: '';
 
-// Fallback warning in development
+// Fallback warning and security check
 if (empty($password)) {
-    error_log("WARNING: DB_PASSWORD not set in environment. Please configure .env file.");
+    $errorMsg = "CRITICAL: DB_PASSWORD not set in environment. Please configure .env file.";
+    error_log($errorMsg);
+    
+    // In production, do not allow connections without password
+    if (getenv('DEBUG_MODE') !== 'true') {
+        http_response_code(500);
+        echo json_encode([
+            "error" => "Database configuration error",
+            "details" => "Missing required credentials. Contact administrator."
+        ]);
+        exit;
+    }
 }
 
 try {
