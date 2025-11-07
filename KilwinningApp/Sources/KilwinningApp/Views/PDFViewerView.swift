@@ -42,7 +42,13 @@ struct PDFViewerView: View {
                     }
                 } else {
                     #if canImport(PDFKit)
-                    PDFKitView(url: URL(string: pdfURL)!)
+                    if let url = URL(string: pdfURL) {
+                        PDFKitView(url: url)
+                    } else {
+                        Text("URL PDF non valido")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
                     #else
                     Text("Visualizzazione PDF non disponibile su questa piattaforma")
                         .font(.subheadline)
@@ -61,8 +67,8 @@ struct PDFViewerView: View {
                 
                 #if canImport(PDFKit)
                 ToolbarItem(placement: .primaryAction) {
-                    if !isLoading, errorMessage == nil {
-                        ShareLink(item: URL(string: pdfURL)!) {
+                    if !isLoading, errorMessage == nil, let url = URL(string: pdfURL) {
+                        ShareLink(item: url) {
                             Image(systemName: "square.and.arrow.up")
                         }
                     }

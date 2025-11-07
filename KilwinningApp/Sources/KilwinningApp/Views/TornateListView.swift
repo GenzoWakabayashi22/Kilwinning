@@ -151,6 +151,11 @@ struct TornataListRow: View {
         .sheet(isPresented: $showingDetails) {
             if let brother = authService.currentBrother {
                 TornataDetailView(tornata: tornata, brother: brother)
+            } else {
+                // Fallback se l'utente non è autenticato
+                Text("Errore: utente non autenticato")
+                    .foregroundColor(.red)
+                    .padding()
             }
         }
     }

@@ -174,11 +174,15 @@ class DataService: ObservableObject {
         // Usa l'ID del fratello demo se disponibile
         let demoFratelloId = UUID() // In produzione questo sarà l'ID del fratello loggato
         
+        // Data per la prima tavola (tornata di novembre)
+        dateComponents.month = 11
+        dateComponents.day = 25
+        let data1 = calendar.date(from: dateComponents)
+        
         tavole.append(Tavola(
             brotherId: demoFratelloId,
             title: "Il Simbolismo della Squadra e del Compasso",
-            presentationDate: dateComponents.month == 12 && dateComponents.day == 10 ? 
-                calendar.date(from: dateComponents) : Date(),
+            presentationDate: data1,
             status: .completata,
             content: "Approfondimento sul significato simbolico degli strumenti del Libero Muratore.",
             pdfURL: "https://example.com/tavole/simbolismo_squadra_compasso.pdf",
