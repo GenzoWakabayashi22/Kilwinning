@@ -1,0 +1,1468 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.xctest",
+      "packagePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp",
+      "productName" : "KilwinningAppPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+    "KilwinningAppPackageDiscoveredTests"
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.KilwinningApp-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/share/swift/usr/bin/swiftc",
+      "fileList" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/sources",
+      "importPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/KilwinningApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/AudioDiscussione.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Brother.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/ChatRoom.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Libro.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/MessaggioChat.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Notification.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Presence.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Prestito.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tavola.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tornata.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AudioService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AuthenticationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/ChatService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/DataService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ChatView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/DashboardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/HomeContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/InformazioniLoggiaSection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/LoginView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/MieiPrestitiView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/NotificheView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PDFViewerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PasswordResetView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PresenzeView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ProssimeTornateSection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/RegistrationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TavoleView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornataDetailView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornateListView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "KilwinningApp",
+      "moduleOutputPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningApp.swiftmodule",
+      "objects" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/KilwinningApp.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioDiscussione.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Brother.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatRoom.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Libro.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MessaggioChat.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Notification.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Presence.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Prestito.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tavola.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tornata.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AuthenticationService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DataService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LibraryService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificationService.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioPlayerView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/BibliotecaView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DashboardView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/HomeContentView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/InformazioniLoggiaSection.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LoginView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MieiPrestitiView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificheView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PDFViewerView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PasswordResetView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PresenzeView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ProssimeTornateSection.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/RegistrationView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TavoleView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornataDetailView.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornateListView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/include/KilwinningApp-Swift.h",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "kilwinningapp",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/KilwinningApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioDiscussione.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Brother.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatRoom.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Libro.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MessaggioChat.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Notification.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Presence.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Prestito.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tavola.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tornata.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AuthenticationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DataService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LibraryService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioPlayerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/BibliotecaView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DashboardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/HomeContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/InformazioniLoggiaSection.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LoginView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MieiPrestitiView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificheView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PDFViewerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PasswordResetView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PresenzeView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ProssimeTornateSection.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/RegistrationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TavoleView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornataDetailView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornateListView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningApp.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/KilwinningApp.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/AudioDiscussione.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Brother.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/ChatRoom.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Libro.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/MessaggioChat.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Notification.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Presence.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Prestito.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tavola.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tornata.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AudioService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AuthenticationService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/ChatService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/DataService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ChatView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/DashboardView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/HomeContentView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/InformazioniLoggiaSection.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/LoginView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/MieiPrestitiView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/NotificheView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PDFViewerView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PasswordResetView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PresenzeView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ProssimeTornateSection.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/RegistrationView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TavoleView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornataDetailView.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornateListView.swift"
+      ],
+      "tempsPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.KilwinningAppPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/share/swift/usr/bin/swiftc",
+      "fileList" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/sources",
+      "importPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/KilwinningAppTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "KilwinningAppPackageDiscoveredTests",
+      "moduleOutputPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageDiscoveredTests.swiftmodule",
+      "objects" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/KilwinningAppTests.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/include/KilwinningAppPackageDiscoveredTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "kilwinningapp",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/KilwinningAppTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/KilwinningAppTests.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift"
+      ],
+      "tempsPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.KilwinningAppPackageTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/share/swift/usr/bin/swiftc",
+      "fileList" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/sources",
+      "importPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageDiscoveredTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "KilwinningAppPackageTests",
+      "moduleOutputPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageTests.swiftmodule",
+      "objects" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/include/KilwinningAppPackageTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "kilwinningapp",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.KilwinningAppTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/share/swift/usr/bin/swiftc",
+      "fileList" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/sources",
+      "importPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/BrotherTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewModelsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewServicesTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/PresenceTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/TornataTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningApp.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "KilwinningAppTests",
+      "moduleOutputPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppTests.swiftmodule",
+      "objects" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/BrotherTests.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewModelsTests.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewServicesTests.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/PresenceTests.swift.o",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/TornataTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j4",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "kilwinningapp",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/BrotherTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewModelsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewServicesTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/PresenceTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/TornataTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/BrotherTests.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewModelsTests.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewServicesTests.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/PresenceTests.swift",
+        "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/TornataTests.swift"
+      ],
+      "tempsPath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "KilwinningApp" : [
+      "/usr/share/swift/usr/bin/swiftc",
+      "-module-name",
+      "KilwinningApp",
+      "-package-name",
+      "kilwinningapp",
+      "-c",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/KilwinningApp.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/AudioDiscussione.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Brother.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/ChatRoom.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Libro.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/MessaggioChat.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Notification.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Presence.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Prestito.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tavola.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tornata.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AudioService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AuthenticationService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/ChatService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/DataService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ChatView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/DashboardView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/HomeContentView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/InformazioniLoggiaSection.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/LoginView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/MieiPrestitiView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/NotificheView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PDFViewerView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PasswordResetView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PresenzeView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ProssimeTornateSection.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/RegistrationView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TavoleView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornataDetailView.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornateListView.swift",
+      "-I",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j4",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/include/KilwinningApp-Swift.h",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "kilwinningapp",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/share/swift/usr/bin/swiftc"
+    ],
+    "KilwinningAppPackageDiscoveredTests" : [
+      "/usr/share/swift/usr/bin/swiftc",
+      "-module-name",
+      "KilwinningAppPackageDiscoveredTests",
+      "-package-name",
+      "kilwinningapp",
+      "-c",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/KilwinningAppTests.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift",
+      "-I",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j4",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/include/KilwinningAppPackageDiscoveredTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "kilwinningapp",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/share/swift/usr/bin/swiftc"
+    ],
+    "KilwinningAppPackageTests" : [
+      "/usr/share/swift/usr/bin/swiftc",
+      "-module-name",
+      "KilwinningAppPackageTests",
+      "-package-name",
+      "kilwinningapp",
+      "-c",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift",
+      "-I",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j4",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/include/KilwinningAppPackageTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "kilwinningapp",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/share/swift/usr/bin/swiftc"
+    ],
+    "KilwinningAppTests" : [
+      "/usr/share/swift/usr/bin/swiftc",
+      "-module-name",
+      "KilwinningAppTests",
+      "-package-name",
+      "kilwinningapp",
+      "-c",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/BrotherTests.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewModelsTests.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewServicesTests.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/PresenceTests.swift",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/TornataTests.swift",
+      "-I",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j4",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "kilwinningapp",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/share/swift/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "KilwinningApp" : [
+
+    ],
+    "KilwinningAppPackageDiscoveredTests" : [
+      "KilwinningAppTests",
+      "KilwinningApp"
+    ],
+    "KilwinningAppPackageTests" : [
+      "KilwinningAppPackageDiscoveredTests",
+      "KilwinningAppTests",
+      "KilwinningApp"
+    ],
+    "KilwinningAppTests" : [
+      "KilwinningApp"
+    ]
+  },
+  "testDiscoveryCommands" : {
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/BrotherTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewModelsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewServicesTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/PresenceTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/TornataTests.swift.o"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/KilwinningAppTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ]
+    }
+  },
+  "testEntryPointCommands" : {
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/Modules/KilwinningAppPackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/KilwinningApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/AudioDiscussione.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Brother.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/ChatRoom.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Libro.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/MessaggioChat.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Notification.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Presence.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Prestito.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tavola.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Models/Tornata.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AudioService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/AuthenticationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/ChatService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/DataService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/LibraryService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Services/NotificationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Utilities/AppTheme.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AdministrationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/AudioPlayerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/BibliotecaView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ChatView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/DashboardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/HomeContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/InformazioniLoggiaSection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/LoginView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/MieiPrestitiView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/NotificheView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PDFViewerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PasswordResetView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/PresenzeView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/ProssimeTornateSection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/RegistrationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TavoleView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornataDetailView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Sources/KilwinningApp/Views/TornateListView.swift"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/sources"
+    },
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/KilwinningAppTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/sources"
+    },
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/sources"
+    },
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AdministrationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AppTheme.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioDiscussione.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioPlayerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AudioService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/AuthenticationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/BibliotecaView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Brother.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatRoom.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DashboardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/DataService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/HomeContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/InformazioniLoggiaSection.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/KilwinningApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/KilwinningApp.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LibraryService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Libro.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/LoginView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MessaggioChat.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/MieiPrestitiView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Notification.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/NotificheView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PDFViewerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PasswordResetView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Presence.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/PresenzeView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Prestito.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/ProssimeTornateSection.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/RegistrationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tavola.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TavoleView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/Tornata.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornataDetailView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningApp.build/TornateListView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/KilwinningAppPackageDiscoveredTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/KilwinningAppTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/KilwinningAppPackageTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/BrotherTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/KilwinningAppTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewModelsTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/NewServicesTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/PresenceTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/TornataTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppPackageTests.product/Objects.LinkFileList"
+    },
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/BrotherTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewModelsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/NewServicesTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/PresenceTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/Tests/KilwinningAppTests/TornataTests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/KilwinningAppTests.build/sources"
+    },
+    "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/usr/share/swift/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/home/runner/work/Kilwinning/Kilwinning/KilwinningApp/.build/x86_64-unknown-linux-gnu/debug/swift-version--1BFCD5C06E9F820A.txt"
+    }
+  }
+}
