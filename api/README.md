@@ -17,6 +17,8 @@ The API connects to the MySQL database `jmvvznbb_tornate_db` hosted on Netsons u
 ```
 /api/
 ├── config.php              # Database configuration and CORS headers
+├── tornate.php             # Tornate (lodge meetings) management
+├── presenze.php            # Attendance tracking
 ├── audio_discussioni.php   # Audio discussions management
 ├── libri.php              # Library catalog management
 ├── prestiti.php           # Library loan management
@@ -26,7 +28,74 @@ The API connects to the MySQL database `jmvvznbb_tornate_db` hosted on Netsons u
 
 ## 🔌 API Endpoints
 
-### 1. Audio Discussions (`audio_discussioni.php`)
+### 1. Tornate (`tornate.php`)
+
+Manages tornate (lodge meetings).
+
+**GET** `/api/tornate.php`
+- Get all tornate
+- Optional query parameters:
+  - `tipo`: Filter by type (Ordinaria, Cerimonia)
+  - `luogo`: Filter by location
+  - `data_inizio` & `data_fine`: Filter by date range
+  - `anno`: Filter by year
+- Returns: Array of tornata objects
+
+**GET** `/api/tornate.php?id=XX`
+- Get specific tornata by ID
+- Returns: Single tornata object
+
+**POST** `/api/tornate.php`
+- Create or update tornata
+- Body (JSON):
+  ```json
+  {
+    "id": 1,  // Optional, for update
+    "titolo": "Il sentiero della saggezza",
+    "data_tornata": "2025-11-25T19:30:00Z",
+    "tipo": "Ordinaria",
+    "luogo": "Nostra Loggia - Tolfa",
+    "presentato_da": "Fr. Marco Rossi",
+    "ha_agape": 1,
+    "note": "Note opzionali"
+  }
+  ```
+
+**DELETE** `/api/tornate.php?id=XX`
+- Delete tornata by ID
+
+---
+
+### 2. Presenze (`presenze.php`)
+
+Manages attendance tracking for tornate.
+
+**GET** `/api/presenze.php?id_fratello=XX`
+- Get all presenze for a specific brother
+- Returns: Array of presenza objects with tornata details
+
+**GET** `/api/presenze.php?id_tornata=XX`
+- Get all presenze for a specific tornata
+- Returns: Array of presenza objects with brother details
+
+**GET** `/api/presenze.php?id_fratello=XX&anno=YYYY`
+- Get presence statistics for a brother in a specific year
+- Returns: Statistics object with totals
+
+**POST** `/api/presenze.php`
+- Update or create presenza
+- Body (JSON):
+  ```json
+  {
+    "id_fratello": 1,
+    "id_tornata": 5,
+    "stato": "Presente"  // Presente, Assente, Non Confermato
+  }
+  ```
+
+---
+
+### 3. Audio Discussions (`audio_discussioni.php`)
 
 Handles audio discussions linked to tornate.
 
@@ -56,7 +125,7 @@ Handles audio discussions linked to tornate.
 
 ---
 
-### 2. Library Catalog (`libri.php`)
+### 4. Library Catalog (`libri.php`)
 
 Manages the library catalog with search and filtering.
 
@@ -94,7 +163,7 @@ Manages the library catalog with search and filtering.
 
 ---
 
-### 3. Library Loans (`prestiti.php`)
+### 5. Library Loans (`prestiti.php`)
 
 Manages library loans and automatically updates book availability.
 
@@ -131,7 +200,7 @@ Manages library loans and automatically updates book availability.
 
 ---
 
-### 4. Chat System (`chat.php`)
+### 6. Chat System (`chat.php`)
 
 Internal messaging system with chat rooms and messages.
 
@@ -176,7 +245,7 @@ Internal messaging system with chat rooms and messages.
 
 ---
 
-### 5. Notifications (`notifiche.php`)
+### 7. Notifications (`notifiche.php`)
 
 In-app notifications for tornate, audio, tavole, libri, and chat.
 
