@@ -68,7 +68,12 @@ struct BibliotecaView: View {
                     }
                 }
                 .padding(12)
-                .background(Color(.systemGray6))
+                // Platform-specific background color: iOS uses systemGray6, macOS uses windowBackgroundColor
+                #if os(iOS)
+                .background(Color(UIColor.systemGray6))
+                #else
+                .background(Color(NSColor.windowBackgroundColor))
+                #endif
                 .cornerRadius(10)
                 
                 // Filtri
@@ -104,7 +109,12 @@ struct BibliotecaView: View {
                 }
             }
             .padding()
-            .background(Color(.systemBackground))
+            // Platform-specific background color: iOS uses systemBackground, macOS uses windowBackgroundColor
+            #if os(iOS)
+            .background(Color(UIColor.systemBackground))
+            #else
+            .background(Color(NSColor.windowBackgroundColor))
+            #endif
             
             Divider()
             
@@ -323,7 +333,10 @@ struct LibroDetailView: View {
                 .padding()
             }
             .navigationTitle("Dettagli Libro")
+            // Platform-specific navigation bar display mode (iOS only)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Chiudi") {
@@ -398,7 +411,10 @@ struct AddLibroView: View {
                 }
             }
             .navigationTitle("Nuovo Libro")
+            // Platform-specific navigation bar display mode (iOS only)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Annulla") {
@@ -453,7 +469,12 @@ struct FilterChip: View {
                 .foregroundColor(isSelected ? .white : AppTheme.masonicBlue)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                .background(isSelected ? AppTheme.masonicBlue : Color(.systemGray6))
+                // Platform-specific background color for filter chips
+                #if os(iOS)
+                .background(isSelected ? AppTheme.masonicBlue : Color(UIColor.systemGray6))
+                #else
+                .background(isSelected ? AppTheme.masonicBlue : Color(NSColor.windowBackgroundColor))
+                #endif
                 .cornerRadius(16)
         }
     }
