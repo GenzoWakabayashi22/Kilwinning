@@ -32,8 +32,8 @@ struct InformazioniLoggiaSection: View {
                     icon: "calendar",
                     content: {
                         VStack(alignment: .leading, spacing: 6) {
-                            InfoRow(label: "Secondo martedì del mese")
-                            InfoRow(label: "Quarto giovedì del mese")
+                            InfoRow(label: "Secondo martedì del mese", showBullet: true)
+                            InfoRow(label: "Quarto giovedì del mese", showBullet: true)
                             
                             Divider()
                             
@@ -117,20 +117,7 @@ struct InfoCard<Content: View>: View {
     }
 }
 
-struct InfoRow: View {
-    let label: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "circle.fill")
-                .font(.system(size: 6))
-                .foregroundColor(AppTheme.masonicBlue)
-            
-            Text(label)
-                .font(.subheadline)
-        }
-    }
-}
+// InfoRow moved to Utilities/CommonViews.swift to avoid duplication
 
 struct StatisticRow: View {
     let label: String

@@ -459,45 +459,8 @@ struct FilterChip: View {
     }
 }
 
-/// Componente per riga informazioni
-struct InfoRow: View {
-    let label: String
-    let value: String
-    
-    var body: some View {
-        HStack {
-            Text(label + ":")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            
-            Spacer()
-            
-            Text(value)
-                .font(.subheadline)
-                .foregroundColor(.primary)
-        }
-    }
-}
+// InfoRow and EmptyStateView moved to Utilities/CommonViews.swift to avoid duplication
 
-/// Vista stato vuoto
-struct EmptyStateView: View {
-    let icon: String
-    let message: String
-    
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.system(size: 64))
-                .foregroundColor(.gray.opacity(0.5))
-            
-            Text(message)
-                .font(.headline)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
-    }
-}
 
 #Preview {
     BibliotecaView()
