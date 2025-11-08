@@ -7,8 +7,9 @@ struct KilwinningApp: App {
     @StateObject private var notificationService = NotificationService()
     @StateObject private var chatService = ChatService()
     @StateObject private var libraryService = LibraryService()
+    @StateObject private var bibliotecaService = BibliotecaService()
     @StateObject private var audioService = AudioService()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -17,7 +18,14 @@ struct KilwinningApp: App {
                 .environmentObject(notificationService)
                 .environmentObject(chatService)
                 .environmentObject(libraryService)
+                .environmentObject(bibliotecaService)
                 .environmentObject(audioService)
+                .onAppear {
+                    // Initialize biblioteca service with current user
+                    if let fratelloId = authService.currentBrother?.id {
+                        bibliotecaService.setCurrentFratello(id: fratelloId)
+                    }
+                }
         }
         #if os(macOS)
         .windowStyle(.hiddenTitleBar)
