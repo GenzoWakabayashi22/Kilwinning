@@ -46,7 +46,7 @@ struct MieiPrestitiView: View {
                 }
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color.appBackground)
             
             Divider()
             
