@@ -21,7 +21,7 @@ class NetworkService: ObservableObject {
     @available(*, deprecated, message: "Usa dependency injection con NetworkService() invece di .shared")
     static let shared = NetworkService()
 
-    init() {}
+    nonisolated init() {}
     
     // MARK: - Generic Request Methods
     

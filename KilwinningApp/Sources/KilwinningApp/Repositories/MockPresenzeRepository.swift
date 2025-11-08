@@ -1,9 +1,9 @@
 import Foundation
 
 /// Implementazione Mock del repository delle presenze per testing e sviluppo
-@MainActor
-class MockPresenzeRepository: PresenzeRepositoryProtocol {
+final class MockPresenzeRepository: PresenzeRepositoryProtocol, @unchecked Sendable {
 
+    private let lock = NSLock()
     private var presenze: [Presence] = []
 
     init() {
@@ -12,16 +12,23 @@ class MockPresenzeRepository: PresenzeRepositoryProtocol {
 
     func fetchPresenze() async throws -> [Presence] {
         try await Task.sleep(nanoseconds: 300_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         return presenze
     }
 
     func fetchPresenze(forBrotherId brotherId: UUID) async throws -> [Presence] {
         try await Task.sleep(nanoseconds: 300_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         return presenze.filter { $0.brotherId == brotherId }
     }
 
     func updatePresence(brotherId: UUID, tornataId: UUID, status: PresenceStatus) async throws {
         try await Task.sleep(nanoseconds: 500_000_000)
+        
+        lock.lock()
+        defer { lock.unlock() }
 
         if let index = presenze.firstIndex(where: { $0.brotherId == brotherId && $0.tornataId == tornataId }) {
             var presence = presenze[index]
@@ -40,6 +47,8 @@ class MockPresenzeRepository: PresenzeRepositoryProtocol {
     }
 
     func getPresenceStatus(brotherId: UUID, tornataId: UUID) -> PresenceStatus {
-        presenze.first { $0.brotherId == brotherId && $0.tornataId == tornataId }?.status ?? .nonConfermato
+        lock.lock()
+        defer { lock.unlock() }
+        return presenze.first { $0.brotherId == brotherId && $0.tornataId == tornataId }?.status ?? .nonConfermato
     }
 }

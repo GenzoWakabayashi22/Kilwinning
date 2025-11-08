@@ -1,9 +1,9 @@
 import Foundation
 
 /// Implementazione Mock del repository delle tornate per testing e sviluppo
-@MainActor
-class MockTornateRepository: TornateRepositoryProtocol {
+final class MockTornateRepository: TornateRepositoryProtocol, @unchecked Sendable {
 
+    private let lock = NSLock()
     private var tornate: [Tornata] = []
 
     init() {
@@ -13,22 +13,30 @@ class MockTornateRepository: TornateRepositoryProtocol {
     func fetchTornate() async throws -> [Tornata] {
         // Simula un ritardo di rete
         try await Task.sleep(nanoseconds: 500_000_000) // 0.5 secondi
+        lock.lock()
+        defer { lock.unlock() }
         return tornate
     }
 
     func fetchTornata(id: UUID) async throws -> Tornata? {
         try await Task.sleep(nanoseconds: 300_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         return tornate.first { $0.id == id }
     }
 
     func createTornata(_ tornata: Tornata) async throws {
         try await Task.sleep(nanoseconds: 500_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         tornate.append(tornata)
         tornate.sort { $0.date > $1.date }
     }
 
     func updateTornata(_ tornata: Tornata) async throws {
         try await Task.sleep(nanoseconds: 500_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         if let index = tornate.firstIndex(where: { $0.id == tornata.id }) {
             tornate[index] = tornata
         }
@@ -36,6 +44,8 @@ class MockTornateRepository: TornateRepositoryProtocol {
 
     func deleteTornata(_ tornata: Tornata) async throws {
         try await Task.sleep(nanoseconds: 500_000_000)
+        lock.lock()
+        defer { lock.unlock() }
         tornate.removeAll { $0.id == tornata.id }
     }
 
