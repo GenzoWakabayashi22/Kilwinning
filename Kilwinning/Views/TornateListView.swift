@@ -62,7 +62,11 @@ struct TornateListView: View {
                 }
             }
         }
-        .navigationBarHidden(true)
+#if os(iOS)
+.navigationBarHidden(true)
+#elseif os(macOS)
+.toolbar(.hidden, for: .automatic)
+#endif
     }
 }
 

@@ -74,7 +74,7 @@ struct HomeContentView: View {
                 .padding(.horizontal)
                 
                 // Sezione Prossime Tornate (rinnovata)
-                ProssimeTornateSectionModern(brother: brother)
+                ProssimeTornateSection(brother: brother)
                     .padding(.horizontal)
             }
             .padding(.vertical)

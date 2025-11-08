@@ -13,10 +13,23 @@ struct AppTheme {
     static let lightCardBackground = Color(red: 0.95, green: 0.95, blue: 0.97)
     
     // Adaptive Colors
+    // MARK: - Adaptive Colors (iOS + macOS)
+    #if os(iOS)
     static let adaptiveBackground = Color(UIColor.systemBackground)
     static let adaptiveCardBackground = Color(UIColor.secondarySystemBackground)
     static let adaptiveText = Color(UIColor.label)
     static let adaptiveSecondaryText = Color(UIColor.secondaryLabel)
+    #elseif os(macOS)
+    static let adaptiveBackground = Color(NSColor.windowBackgroundColor)
+    static let adaptiveCardBackground = Color(NSColor.controlBackgroundColor)
+    static let adaptiveText = Color(NSColor.labelColor)
+    static let adaptiveSecondaryText = Color(NSColor.secondaryLabelColor)
+    #else
+    static let adaptiveBackground = Color.white
+    static let adaptiveCardBackground = Color.gray.opacity(0.1)
+    static let adaptiveText = Color.black
+    static let adaptiveSecondaryText = Color.gray
+    #endif
     
     // Colori primari (mantenuti per compatibilità)
     static let masonicBlue = Color(red: 0.0, green: 0.2, blue: 0.4)
