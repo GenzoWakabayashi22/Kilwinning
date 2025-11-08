@@ -1,193 +1,144 @@
-# Spettabile Loggia Kilwinning - Repository Ufficiale
+# Spettabile Loggia Kilwinning - App iOS e macOS
 
-Benvenuto nel repository ufficiale della Loggia Kilwinning.
+Benvenuto nel repository ufficiale dell'applicazione Kilwinning per la gestione delle tornate, presenze e tavole architettoniche della Loggia.
 
-## 📱 Sistema Gestione Tornate
+## 📱 Apertura del Progetto
 
-Questo repository contiene l'applicazione completa per la gestione delle tornate, presenze e tavole architettoniche della Loggia.
+Per aprire il progetto in Xcode:
 
-### 🚀 Accesso Rapido
+1. **Doppio click su** `Kilwinning.xcodeproj` nella root del repository
+2. Oppure da terminale:
+   ```bash
+   cd Kilwinning
+   open Kilwinning.xcodeproj
+   ```
 
-L'applicazione SwiftUI si trova nella cartella **`KilwinningApp/`**
+## 📋 Requisiti di Sistema
+
+- **Xcode**: 15.0 o superiore
+- **iOS**: 17.0+ (supporto iPhone e iPad)
+- **macOS**: 14.0+ (supporto nativo Mac)
+- **Swift**: 5.9+
+
+## 🚀 Come Buildare ed Eseguire
+
+### Build dal Xcode
+
+1. Apri `Kilwinning.xcodeproj`
+2. Seleziona il target "Kilwinning"
+3. Scegli il dispositivo (simulatore iOS, Mac, o dispositivo fisico)
+4. Premi `Cmd + R` per buildare ed eseguire
+
+### Build da Linea di Comando
 
 ```bash
-cd KilwinningApp
-open Package.swift  # Apre in Xcode su macOS
+# Build per iOS Simulator
+xcodebuild -project Kilwinning.xcodeproj -scheme Kilwinning -sdk iphonesimulator
+
+# Build per macOS
+xcodebuild -project Kilwinning.xcodeproj -scheme Kilwinning -sdk macosx
 ```
 
-### 📚 Documentazione Completa
-
-Tutta la documentazione si trova in `KilwinningApp/`:
-
-- **[README.md](KilwinningApp/README.md)** - Panoramica del progetto
-- **[QUICK_START.md](KilwinningApp/QUICK_START.md)** - Inizia in 5 minuti
-- **[SETUP.md](KilwinningApp/SETUP.md)** - Guida installazione completa
-- **[GUIDA_UTENTE.md](KilwinningApp/GUIDA_UTENTE.md)** - Manuale utente
-- **[DOCUMENTATION.md](KilwinningApp/DOCUMENTATION.md)** - Dettagli tecnici
-- **[PANORAMICA_VISUALE.md](KilwinningApp/PANORAMICA_VISUALE.md)** - Diagrammi e overview
-- **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** - Riepilogo completo progetto
-
-### ✨ Caratteristiche Principali
-
-- ✅ **Multi-piattaforma**: iOS 17+ e macOS 14+
-- ✅ **Autenticazione**: Login sicuro con email/password
-- ✅ **Dashboard Personale**: Statistiche e informazioni fratello
-- ✅ **Gestione Tornate**: Elenco, dettagli, conferma presenza
-- ✅ **Statistiche Presenze**: Grafici e record personali
-- ✅ **Tavole Architettoniche**: Gestione completa
-- ✅ **Amministrazione**: Pannello per Ven.mo Maestro e Segretario
-- ✅ **Design Istituzionale**: Tema azzurro massonico, bianco e oro
-
-### 🔧 Tecnologie
-
-- **App Mobile**: Swift 5.9+ con SwiftUI
-- **Architettura**: MVVM
-- **Build**: Swift Package Manager
-- **Backend API**: PHP 8+ con PDO
-- **Database**: MySQL (Netsons hosting)
-- **API Style**: REST con JSON responses
-
-### 🎯 Status del Progetto
-
-**✅ COMPLETATO** - App e Backend API pronti per deployment
-
-- 19 file sorgente Swift
-- 6 endpoint REST API PHP completi
-- 3 suite di test unitari
-- 8+ file di documentazione dettagliata
-- Design completo e funzionante
-- Pronto per App Store e produzione
-
-### 🏁 Quick Start
-
-1. **Clone del repository**:
-   ```bash
-   git clone https://github.com/GenzoWakabayashi22/Kilwinning.git
-   cd Kilwinning/KilwinningApp
-   ```
-
-2. **Apri in Xcode** (richiede macOS):
-   ```bash
-   open Package.swift
-   ```
-
-3. **Build & Run**:
-   - Seleziona target (iOS/macOS)
-   - Premi `Cmd + R`
-
-4. **Login Demo**:
-   - Email: `demo@kilwinning.it`
-   - Password: `demo123`
-
-### 📂 Struttura Repository
+## 📂 Struttura del Progetto
 
 ```
 Kilwinning/
-├── README.md                    # Questo file
-├── PROJECT_SUMMARY.md           # Riepilogo completo progetto
-├── api/                         # ⭐ REST API PHP Backend (Netsons)
-│   ├── config.php              # Configurazione database
-│   ├── audio_discussioni.php   # Gestione audio discussioni
-│   ├── libri.php               # Catalogo biblioteca
-│   ├── prestiti.php            # Gestione prestiti
-│   ├── chat.php                # Sistema messaggistica
-│   ├── notifiche.php           # Notifiche in-app
-│   ├── index.php               # Health check API
-│   └── README.md               # Documentazione API
-├── backend/                     # Backend Node.js (esistente)
-│   ├── package.json
-│   └── src/
-└── KilwinningApp/              # App SwiftUI principale
-    ├── Package.swift
-    ├── README.md
-    ├── SETUP.md
-    ├── DOCUMENTATION.md
-    ├── GUIDA_UTENTE.md
-    ├── PANORAMICA_VISUALE.md
-    ├── QUICK_START.md
-    ├── Sources/
-    │   └── KilwinningApp/
-    │       ├── Models/
-    │       ├── Views/
-    │       ├── Services/
-    │       └── Utilities/
-    └── Tests/
-        └── KilwinningAppTests/
+├── Kilwinning.xcodeproj/     # Progetto Xcode
+├── Kilwinning/               # Codice sorgente
+│   ├── KilwinningApp.swift  # Entry point dell'app
+│   ├── Core/                # Costanti e configurazione
+│   ├── Models/              # Modelli dati (Brother, Tornata, ecc.)
+│   ├── Views/               # UI SwiftUI
+│   ├── Services/            # Servizi (Auth, Network, Data)
+│   ├── Repositories/        # Layer accesso dati
+│   ├── Utilities/           # Utility e temi
+│   ├── Info.plist          # Configurazione app
+│   ├── Config.plist        # Configurazione API
+│   └── Assets.xcassets     # Risorse grafiche
+├── api/                     # Backend REST API PHP
+├── backend/                 # Backend Node.js
+└── README.md               # Questo file
 ```
 
-### 🎨 Screenshots
+## ✨ Caratteristiche Principali
 
-_Screenshot saranno aggiunti dopo il primo build su dispositivo._
+- ✅ **Multi-piattaforma**: iOS 17+ e macOS 14+
+- ✅ **Autenticazione**: Login sicuro con email/password
+- ✅ **Dashboard Personale**: Statistiche e informazioni del fratello
+- ✅ **Gestione Tornate**: Elenco, dettagli, conferma presenza
+- ✅ **Statistiche Presenze**: Grafici e record personali
+- ✅ **Biblioteca**: Catalogo libri e gestione prestiti
+- ✅ **Tavole Architettoniche**: Gestione completa con PDF viewer
+- ✅ **Chat**: Sistema messaggistica interno
+- ✅ **Audio Discussioni**: Registrazione e playback discussioni
+- ✅ **Notifiche**: Sistema notifiche in-app
+- ✅ **Amministrazione**: Pannello per Ven.mo Maestro e Segretario
+- ✅ **Design Istituzionale**: Tema azzurro massonico, bianco e oro
 
-L'app presenta:
-- Schermata di login elegante
-- Dashboard con card informative
-- Liste filtrabili di tornate
-- Grafici statistiche
-- Gestione tavole
-- Pannello amministrazione
+## 🔧 Configurazione
 
-### 🔐 Sicurezza e Privacy
+### API Backend
 
-- Autenticazione sicura
-- Gestione sessioni
+Il file `Kilwinning/Config.plist` contiene la configurazione dell'API backend:
+
+```xml
+<key>API_BASE_URL</key>
+<string>https://loggiakilwinning.com/api/</string>
+```
+
+Modifica questo file per puntare al tuo server API.
+
+### Bundle Identifier
+
+Il Bundle ID del progetto è: `com.kilwinning.app`
+
+Puoi modificarlo nelle impostazioni del target in Xcode se necessario.
+
+## 🏗️ Architettura
+
+L'app utilizza un'architettura **MVVM** (Model-View-ViewModel) con SwiftUI:
+
+- **Models**: Strutture dati Codable per API
+- **Views**: Componenti UI SwiftUI
+- **Services**: Business logic e comunicazione API
+- **Repositories**: Pattern repository per astrazione dati
+
+## 🔐 Sicurezza
+
+- Autenticazione sicura con gestione sessioni
 - Controllo accessi basato su ruoli
-- **API Backend**: PDO prepared statements, parameter binding
-- **Database**: Connessione sicura MySQL con credenziali protette
-- Protezione SQL injection e XSS
+- Connessioni HTTPS con il backend
+- Protezione dati locali
 
-### 🌐 Backend REST API
+## 🌐 Backend REST API
 
-Il sistema include un backend PHP completo connesso al database MySQL su Netsons:
+Il sistema si integra con un backend PHP/MySQL. Documentazione completa in `/api/README.md`.
 
-- **Endpoint Audio Discussioni**: Upload e gestione audio pCloud
-- **Endpoint Biblioteca**: Catalogo libri con ricerca e filtri
-- **Endpoint Prestiti**: Gestione automatica disponibilità libri
-- **Endpoint Chat**: Sistema messaggistica interno
-- **Endpoint Notifiche**: Notifiche multi-tipo per tutti gli eventi
+Endpoint principali:
+- `/api/tornate` - Gestione tornate
+- `/api/presenze` - Registrazione presenze
+- `/api/tavole` - Tavole architettoniche
+- `/api/libri` - Biblioteca
+- `/api/prestiti` - Gestione prestiti
+- `/api/chat` - Messaggistica
+- `/api/audio_discussioni` - Audio
+- `/api/notifiche` - Notifiche
 
-**Documentazione**: Vedi `/api/README.md` per dettagli completi
+## 🧪 Testing
 
-### 🌟 Prossimi Passi
+L'app include test unitari. Per eseguirli:
 
-1. **Deploy Backend API**
-   - ✅ API PHP complete e testate
-   - Upload file su hosting Netsons
-   - Configurare SSL/HTTPS
-   - Testare connettività database
+```bash
+xcodebuild test -project Kilwinning.xcodeproj -scheme Kilwinning -destination 'platform=iOS Simulator,name=iPhone 15'
+```
 
-2. **Integrazione App-Backend**
-   - Aggiornare Services in SwiftUI per chiamare API reali
-   - Implementare autenticazione JWT
-   - Gestire token e sessioni
-
-3. **Assets e Branding**
-   - Aggiungere app icons
-   - Creare screenshots per App Store
-   - Preparare materiale marketing
-
-4. **Testing**
-   - Test su dispositivi reali
-   - Beta testing con TestFlight
-   - Raccolta feedback
-
-4. **Deploy**
-   - Configurare certificati App Store
-   - Submit per review
-   - Pubblicazione
-
-### 🤝 Contributi
-
-Questo progetto è sviluppato per la Loggia Kilwinning.
-
-### 📄 Licenza
+## 📄 Licenza
 
 Copyright © 2025 Loggia Kilwinning. Tutti i diritti riservati.
 
-### 📞 Supporto
+## 📞 Supporto
 
 Per supporto tecnico o domande:
-- Consulta la documentazione in `KilwinningApp/`
 - Apri un issue su GitHub
 - Contatta il team di sviluppo
 
@@ -195,6 +146,5 @@ Per supporto tecnico o domande:
 
 **Versione**: 1.0.0  
 **Ultimo Aggiornamento**: Novembre 2025  
-**Stato**: ✅ Produzione-ready  
 
 **Sviluppato con ❤️ per la Spettabile Loggia Kilwinning 🏛️**
