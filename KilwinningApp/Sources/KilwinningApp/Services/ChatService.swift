@@ -2,7 +2,6 @@ import Foundation
 import Combine
 
 /// Servizio per la gestione della chat
-@MainActor
 class ChatService: ObservableObject {
     @Published var chatRooms: [ChatRoom] = []
     @Published var messaggi: [MessaggioChat] = []
