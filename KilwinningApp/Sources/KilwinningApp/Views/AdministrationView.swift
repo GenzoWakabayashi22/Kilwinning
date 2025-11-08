@@ -74,7 +74,7 @@ struct AdminTabButton: View {
 }
 
 struct UsersManagementView: View {
-    @StateObject private var dataService = DataService.shared
+    @StateObject private var dataService = DataService()
     @State private var showingAddUser = false
     
     var body: some View {
@@ -151,8 +151,8 @@ struct TornateManagementView: View {
 
 struct AddTornataView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var dataService = DataService.shared
-    
+    @StateObject private var dataService = DataService()
+
     @State private var title = ""
     @State private var date = Date()
     @State private var type: TornataType = .ordinaria

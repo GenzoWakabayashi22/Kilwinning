@@ -139,12 +139,21 @@ struct PresenceButton: View {
             .foregroundColor(isSelected ? .white : color)
             .frame(maxWidth: .infinity)
             .padding()
-            .background(isSelected ? color : Color(.systemGray6))
+            .background(isSelected ? color : backgroundGray)
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(color, lineWidth: isSelected ? 0 : 2)
             )
         }
+    }
+
+    /// Colore di background compatibile iOS/macOS
+    private var backgroundGray: Color {
+        #if os(iOS)
+        return Color(.systemGray6)
+        #else
+        return Color.gray.opacity(0.2)
+        #endif
     }
 }

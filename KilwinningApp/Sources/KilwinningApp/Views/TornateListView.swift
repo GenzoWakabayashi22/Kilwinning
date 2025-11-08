@@ -116,7 +116,7 @@ struct TornateListView: View {
                 .cardStyle()
             } else {
                 ForEach(filteredTornate) { tornata in
-                    TornataListRow(tornata: tornata)
+                    TornataListRow(tornata: tornata, dataService: dataService)
                 }
             }
         }
@@ -129,10 +129,10 @@ struct TornateListView: View {
 
 struct TornataListRow: View {
     let tornata: Tornata
+    @ObservedObject var dataService: DataService
     @StateObject private var authService = AuthenticationService.shared
-    @StateObject private var dataService = DataService.shared
     @State private var showingDetails = false
-    
+
     var presenceStatus: PresenceStatus {
         guard let brother = authService.currentBrother else { return .nonConfermato }
         return dataService.getPresenceStatus(brotherId: brother.id, tornataId: tornata.id)

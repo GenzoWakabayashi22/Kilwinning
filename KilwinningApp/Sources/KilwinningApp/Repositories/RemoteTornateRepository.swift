@@ -6,8 +6,9 @@ class RemoteTornateRepository: TornateRepositoryProtocol {
 
     private let networkService: NetworkService
 
-    init(networkService: NetworkService = .shared) {
-        self.networkService = networkService
+    init(networkService: NetworkService? = nil) {
+        // Usa NetworkService.shared se non fornito, ma nel contesto MainActor corretto
+        self.networkService = networkService ?? NetworkService.shared
     }
 
     func fetchTornate() async throws -> [Tornata] {
