@@ -3,30 +3,147 @@ import SwiftUI
 struct HomeContentView: View {
     let brother: Brother
     @EnvironmentObject var dataService: DataService
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        VStack(spacing: 20) {
-            // Riquadri principali in 3 colonne
-            #if os(macOS)
-            HStack(alignment: .top, spacing: 15) {
-                GradoRuoloCard(brother: brother)
-                StatistichePresenzeCard(brother: brother)
-                TornatePartecipateCard(brother: brother)
+        ScrollView {
+            VStack(spacing: 20) {
+                // Titolo Dashboard
+                HStack {
+                    Text("Dashboard")
+                        .font(.system(size: 34, weight: .bold))
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                // Griglia principale 2x3
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 15),
+                    GridItem(.flexible(), spacing: 15)
+                ], spacing: 15) {
+                    DashboardCard(
+                        title: "Tornate",
+                        icon: "calendar",
+                        count: dataService.tornate.count,
+                        gradient: AppTheme.tornateCardGradient,
+                        destination: AnyView(TornateListView())
+                    )
+                    
+                    DashboardCard(
+                        title: "Presenze",
+                        icon: "person.3.fill",
+                        count: calculatePresenceCount(),
+                        gradient: AppTheme.presenzeCardGradient,
+                        destination: AnyView(PresenzeView(brother: brother))
+                    )
+                    
+                    DashboardCard(
+                        title: "Biblioteca",
+                        icon: "books.vertical.fill",
+                        count: dataService.libri.count,
+                        gradient: AppTheme.bibliotecaCardGradient,
+                        destination: AnyView(BibliotecaView())
+                    )
+                    
+                    DashboardCard(
+                        title: "Tavole",
+                        icon: "doc.text.fill",
+                        count: dataService.tavole.count,
+                        gradient: AppTheme.tavoleCardGradient,
+                        destination: AnyView(TavoleView(brother: brother))
+                    )
+                    
+                    DashboardCard(
+                        title: "Statistiche",
+                        icon: "chart.bar.fill",
+                        count: nil,
+                        gradient: AppTheme.statisticheCardGradient,
+                        destination: AnyView(StatisticheView(brother: brother))
+                    )
+                    
+                    DashboardCard(
+                        title: "Rituali",
+                        icon: "book.closed.fill",
+                        count: nil,
+                        gradient: AppTheme.ritualiCardGradient,
+                        destination: AnyView(RitualiView())
+                    )
+                }
+                .padding(.horizontal)
+                
+                // Sezione Prossime Tornate (rinnovata)
+                ProssimeTornateSectionModern(brother: brother)
+                    .padding(.horizontal)
             }
-            #else
-            VStack(spacing: 15) {
-                GradoRuoloCard(brother: brother)
-                StatistichePresenzeCard(brother: brother)
-                TornatePartecipateCard(brother: brother)
-            }
-            #endif
-            
-            // Prossime tornate
-            ProssimeTornateSection(brother: brother)
-            
-            // Informazioni Loggia
-            InformazioniLoggiaSection()
+            .padding(.vertical)
         }
+        .background(AppTheme.darkBackground.ignoresSafeArea())
+    }
+    
+    private func calculatePresenceCount() -> Int {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        let stats = dataService.calculateStatistics(for: brother.id, year: currentYear)
+        return stats.presences
+    }
+}
+
+struct DashboardCard: View {
+    let title: String
+    let icon: String
+    let count: Int?
+    let gradient: LinearGradient
+    let destination: AnyView
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Image(systemName: icon)
+                        .font(.system(size: 28))
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    if let count = count {
+                        Text("\(count)")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.white)
+                    }
+                }
+                
+                Text(title)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+            }
+            .padding(20)
+            .frame(height: 120)
+            .background(gradient)
+            .cornerRadius(16)
+            .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4)
+        }
+    }
+}
+
+// Placeholder per la nuova vista Statistiche
+struct StatisticheView: View {
+    let brother: Brother
+    
+    var body: some View {
+        Text("Statistiche View - Da implementare")
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.darkBackground)
+    }
+}
+
+// Placeholder per la nuova vista Rituali
+struct RitualiView: View {
+    var body: some View {
+        Text("Rituali View - Da implementare")
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.darkBackground)
     }
 }
 

@@ -26,6 +26,7 @@ struct Tornata: Identifiable, Codable {
     var introducedBy: String // Nome del fratello che introduce
     var hasDinner: Bool
     var notes: String?
+    var coverImageURL: String? // URL immagine di copertina
     
     var formattedDate: String {
         let formatter = DateFormatter()
@@ -42,6 +43,12 @@ struct Tornata: Identifiable, Codable {
         return formatter.string(from: date)
     }
     
+    var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
+    }
+    
     init(id: UUID = UUID(),
          title: String,
          date: Date,
@@ -49,7 +56,8 @@ struct Tornata: Identifiable, Codable {
          location: TornataLocation = .tofa,
          introducedBy: String,
          hasDinner: Bool = false,
-         notes: String? = nil) {
+         notes: String? = nil,
+         coverImageURL: String? = nil) {
         self.id = id
         self.title = title
         self.date = date
@@ -58,5 +66,6 @@ struct Tornata: Identifiable, Codable {
         self.introducedBy = introducedBy
         self.hasDinner = hasDinner
         self.notes = notes
+        self.coverImageURL = coverImageURL
     }
 }
