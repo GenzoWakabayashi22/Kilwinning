@@ -19,20 +19,23 @@ enum AppConstants {
     // MARK: - Demo Credentials
 
     enum Demo {
-        /// Email demo per il login di prova
-        static let email = "demo@kilwinning.it"
+        /// Username demo per il login di prova
+        static let email = "prova"
 
         /// Password demo per il login di prova
-        static let password = "demo123"
+        static let password = "prova123"
     }
 
     // MARK: - Validation Rules
 
     enum Validation {
         /// Lunghezza minima della password
-        static let minPasswordLength = 8
+        static let minPasswordLength = 6
 
-        /// Regex per validare email
+        /// Lunghezza minima dell'username
+        static let minUsernameLength = 3
+
+        /// Regex per validare email (opzionale)
         static let emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$"
     }
 

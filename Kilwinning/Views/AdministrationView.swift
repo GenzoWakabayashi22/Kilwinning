@@ -75,6 +75,7 @@ struct AdminTabButton: View {
 
 struct UsersManagementView: View {
     @StateObject private var dataService = DataService()
+    @EnvironmentObject var authService: AuthenticationService
     @State private var showingAddUser = false
     
     var body: some View {
@@ -87,7 +88,7 @@ struct UsersManagementView: View {
                 Spacer()
                 
                 Button(action: { showingAddUser = true }) {
-                    Label("Aggiungi", systemImage: "plus.circle.fill")
+                    Label("Aggiungi Fratello", systemImage: "plus.circle.fill")
                         .font(.subheadline)
                         .foregroundColor(AppTheme.masonicGold)
                 }
@@ -115,6 +116,135 @@ struct UsersManagementView: View {
                 InfoMessageCard(
                     message: "La gestione completa degli utenti sarà disponibile nella versione finale con integrazione backend."
                 )
+            }
+        }
+        .sheet(isPresented: $showingAddUser) {
+            AddUserView()
+                .environmentObject(authService)
+        }
+    }
+}
+
+struct AddUserView: View {
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authService: AuthenticationService
+    
+    @State private var firstName = ""
+    @State private var lastName = ""
+    @State private var email = ""
+    @State private var password = ""
+    @State private var degree: MasonicDegree = .apprendista
+    @State private var role: InstitutionalRole = .none
+    @State private var showError = false
+    @State private var showSuccess = false
+    @State private var errorMessage = ""
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section("Dati Personali") {
+                    TextField("Nome", text: $firstName)
+                    TextField("Cognome", text: $lastName)
+                    TextField("Email", text: $email)
+                        .textContentType(.emailAddress)
+                        #if os(iOS)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+                        #endif
+                }
+                
+                Section("Credenziali") {
+                    SecureField("Password", text: $password)
+                        .textContentType(.newPassword)
+                    
+                    if !password.isEmpty && password.count < AppConstants.Validation.minPasswordLength {
+                        Text("La password deve contenere almeno \(AppConstants.Validation.minPasswordLength) caratteri")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                }
+                
+                Section("Grado Massonico") {
+                    Picker("Grado", selection: $degree) {
+                        ForEach(MasonicDegree.allCases, id: \.self) { degree in
+                            Text(degree.rawValue).tag(degree)
+                        }
+                    }
+                }
+                
+                Section("Ruolo Istituzionale") {
+                    Picker("Ruolo", selection: $role) {
+                        ForEach(InstitutionalRole.allCases, id: \.self) { role in
+                            Text(role.rawValue).tag(role)
+                        }
+                    }
+                }
+                
+                Section {
+                    Button(action: createUser) {
+                        if authService.isLoading {
+                            HStack {
+                                ProgressView()
+                                Text("Creazione in corso...")
+                            }
+                        } else {
+                            Text("Crea Fratello")
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(AppTheme.masonicBlue)
+                        }
+                    }
+                    .disabled(!isFormValid || authService.isLoading)
+                }
+            }
+            .navigationTitle("Nuovo Fratello")
+            #if os(iOS)
+            .navigationBarItems(
+                leading: Button("Annulla") { dismiss() }
+            )
+            #else
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annulla") { dismiss() }
+                }
+            }
+            #endif
+            .alert("Errore", isPresented: $showError) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(errorMessage)
+            }
+            .alert("Successo", isPresented: $showSuccess) {
+                Button("OK") {
+                    dismiss()
+                }
+            } message: {
+                Text("Fratello \(firstName) \(lastName) creato con successo")
+            }
+        }
+    }
+    
+    private var isFormValid: Bool {
+        !firstName.isEmpty &&
+        !lastName.isEmpty &&
+        !email.isEmpty &&
+        password.count >= AppConstants.Validation.minPasswordLength
+    }
+    
+    private func createUser() {
+        Task {
+            do {
+                try await authService.createUser(
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    degree: degree,
+                    role: role
+                )
+                showSuccess = true
+            } catch {
+                errorMessage = error.localizedDescription
+                showError = true
             }
         }
     }
