@@ -89,7 +89,7 @@ struct LoginView: View {
                                     .font(.system(size: 16))
                             }
                             .padding()
-                            .background(Color(UIColor.systemGray6))
+                            .background(Color.systemGray6)
                             .cornerRadius(12)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
@@ -117,7 +117,7 @@ struct LoginView: View {
                                     .font(.system(size: 16))
                             }
                             .padding()
-                            .background(Color(UIColor.systemGray6))
+                            .background(Color.systemGray6)
                             .cornerRadius(12)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
@@ -176,7 +176,7 @@ struct LoginView: View {
                     .disabled(authService.isLoading || !isFormValid)
                 }
                 .padding(30)
-                .background(Color(UIColor.systemBackground))
+                .background(Color.systemBackground)
                 .cornerRadius(20)
                 .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
                 .padding(.horizontal, 30)

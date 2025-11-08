@@ -35,12 +35,7 @@ struct ChatView: View {
                 }
             }
             .padding()
-            // Platform-specific background color
-            #if os(iOS)
-            .background(Color(.systemBackground))
-            #else
-            .background(Color(NSColor.windowBackgroundColor))
-            #endif
+            .background(Color.systemBackground)
             
             Divider()
             
@@ -137,12 +132,7 @@ struct ChatRoomRow: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 12)
-        // Platform-specific background color
-        #if os(iOS)
-        .background(Color(.systemBackground))
-        #else
-        .background(Color(NSColor.windowBackgroundColor))
-        #endif
+        .background(Color.systemBackground)
     }
 }
 
@@ -187,12 +177,7 @@ struct ChatConversationView: View {
                         .textFieldStyle(.plain)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        // Platform-specific background color
-                        #if os(iOS)
-                        .background(Color(.systemGray6))
-                        #else
-                        .background(Color(NSColor.controlBackgroundColor))
-                        #endif
+                        .background(Color.systemGray6)
                         .cornerRadius(20)
                         .lineLimit(1...5)
                     
@@ -204,12 +189,7 @@ struct ChatConversationView: View {
                     .disabled(newMessage.isEmpty)
                 }
                 .padding()
-                // Platform-specific background color
-                #if os(iOS)
-                .background(Color(.systemBackground))
-                #else
-                .background(Color(NSColor.windowBackgroundColor))
-                #endif
+                .background(Color.systemBackground)
             }
             .navigationTitle(chat.titolo)
             // Platform-specific navigation bar display mode (iOS only)
@@ -284,12 +264,7 @@ struct MessageBubble: View {
                     .foregroundColor(isCurrentUser ? .white : .primary)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
-                    // Platform-specific background color for message bubbles
-                    #if os(iOS)
-                    .background(isCurrentUser ? AppTheme.masonicBlue : Color(.systemGray5))
-                    #else
-                    .background(isCurrentUser ? AppTheme.masonicBlue : Color(NSColor.controlBackgroundColor))
-                    #endif
+                    .background(isCurrentUser ? AppTheme.masonicBlue : Color.systemGray6)
                     .cornerRadius(18)
                 
                 HStack(spacing: 4) {

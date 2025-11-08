@@ -68,12 +68,7 @@ struct BibliotecaView: View {
                     }
                 }
                 .padding(12)
-                // Platform-specific background color: iOS uses systemGray6, macOS uses windowBackgroundColor
-                #if os(iOS)
-                .background(Color(UIColor.systemGray6))
-                #else
-                .background(Color(NSColor.windowBackgroundColor))
-                #endif
+                .background(Color.systemGray6)
                 .cornerRadius(10)
                 
                 // Filtri
@@ -109,12 +104,7 @@ struct BibliotecaView: View {
                 }
             }
             .padding()
-            // Platform-specific background color: iOS uses systemBackground, macOS uses windowBackgroundColor
-            #if os(iOS)
-            .background(Color(UIColor.systemBackground))
-            #else
-            .background(Color(NSColor.windowBackgroundColor))
-            #endif
+            .background(Color.systemBackground)
             
             Divider()
             
@@ -469,12 +459,7 @@ struct FilterChip: View {
                 .foregroundColor(isSelected ? .white : AppTheme.masonicBlue)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                // Platform-specific background color for filter chips
-                #if os(iOS)
-                .background(isSelected ? AppTheme.masonicBlue : Color(UIColor.systemGray6))
-                #else
-                .background(isSelected ? AppTheme.masonicBlue : Color(NSColor.windowBackgroundColor))
-                #endif
+                .background(isSelected ? AppTheme.masonicBlue : Color.systemGray6)
                 .cornerRadius(16)
         }
     }

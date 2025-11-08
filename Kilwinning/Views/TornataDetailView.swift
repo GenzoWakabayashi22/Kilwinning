@@ -49,12 +49,7 @@ struct TornataDetailView: View {
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                                // Platform-specific background color
-                                #if os(iOS)
-                                .background(Color(.systemGray))
-                                #else
-                                .background(Color(NSColor.systemGray))
-                                #endif
+                                .background(Color.systemGray)
                                 .cornerRadius(8)
                         }
                     }
@@ -90,12 +85,7 @@ struct TornataDetailView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.primary)
                                     .padding()
-                                    // Platform-specific background color
-                                    #if os(iOS)
-                                    .background(Color(.systemGray6))
-                                    #else
-                                    .background(Color(NSColor.controlBackgroundColor))
-                                    #endif
+                                    .background(Color.systemGray6)
                                     .cornerRadius(8)
                             }
                         }
@@ -275,12 +265,7 @@ struct AudioDiscussioneRow: View {
                 .foregroundColor(.gray)
         }
         .padding()
-        // Platform-specific background color
-        #if os(iOS)
-        .background(Color(.systemGray6))
-        #else
-        .background(Color(NSColor.controlBackgroundColor))
-        #endif
+        .background(Color.systemGray6)
         .cornerRadius(12)
     }
 }

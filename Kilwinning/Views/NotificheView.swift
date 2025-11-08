@@ -53,12 +53,7 @@ struct NotificheView: View {
                 }
             }
             .padding()
-            // Platform-specific background color
-            #if os(iOS)
-            .background(Color(.systemBackground))
-            #else
-            .background(Color(NSColor.windowBackgroundColor))
-            #endif
+            .background(Color.systemBackground)
             
             // Filtro
             HStack {
@@ -115,12 +110,7 @@ struct NotificaRow: View {
             // Icona tipo notifica
             ZStack {
                 Circle()
-                    // Platform-specific background color
-                    #if os(iOS)
-                    .fill(notifica.letto ? Color(.systemGray5) : AppTheme.masonicBlue.opacity(0.2))
-                    #else
-                    .fill(notifica.letto ? Color(NSColor.controlBackgroundColor) : AppTheme.masonicBlue.opacity(0.2))
-                    #endif
+                    .fill(notifica.letto ? Color.systemGray6 : AppTheme.masonicBlue.opacity(0.2))
                     .frame(width: 48, height: 48)
                 
                 Image(systemName: tipoIcon)
@@ -166,12 +156,7 @@ struct NotificaRow: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 12)
-        // Platform-specific background color
-        #if os(iOS)
-        .background(notifica.letto ? Color(.systemBackground) : AppTheme.masonicBlue.opacity(0.05))
-        #else
-        .background(notifica.letto ? Color(NSColor.windowBackgroundColor) : AppTheme.masonicBlue.opacity(0.05))
-        #endif
+        .background(notifica.letto ? Color.systemBackground : AppTheme.masonicBlue.opacity(0.05))
         .onTapGesture {
             if !notifica.letto {
                 Task {
