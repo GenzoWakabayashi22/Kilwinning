@@ -3,7 +3,7 @@ import Foundation
 /// Modello dati per una discussione audio collegata a una tornata
 struct AudioDiscussione: Identifiable, Codable {
     let id: Int
-    var idTornata: UUID // Collegamento alla tornata
+    var idTornata: Int // Collegamento alla tornata
     var fratelloIntervento: String
     var titoloIntervento: String
     var durata: String? // Formato: "mm:ss" o "hh:mm:ss"
@@ -19,7 +19,7 @@ struct AudioDiscussione: Identifiable, Codable {
     }
     
     init(id: Int,
-         idTornata: UUID,
+         idTornata: Int,
          fratelloIntervento: String,
          titoloIntervento: String,
          durata: String? = nil,

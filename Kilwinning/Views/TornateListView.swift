@@ -113,11 +113,11 @@ struct TornataCardModern: View {
                 }
                 
                 HStack(spacing: 8) {
-                    Image(systemName: tornata.location.isHome ? "house.fill" : "arrow.right.circle.fill")
+                    Image(systemName: tornata.locationEnum.isHome ? "house.fill" : "arrow.right.circle.fill")
                         .font(.caption)
                         .foregroundColor(AppTheme.masonicGold)
                     
-                    Text(tornata.location.rawValue)
+                    Text(tornata.locationEnum.rawValue)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }

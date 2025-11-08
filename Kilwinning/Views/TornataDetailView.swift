@@ -43,13 +43,13 @@ struct TornataDetailView: View {
                                 .cornerRadius(8)
                             
                             // Location badge
-                            Label(tornata.location.rawValue, systemImage: tornata.location.isHome ? "house.fill" : "arrow.right.circle.fill")
+                            Label(tornata.locationEnum.rawValue, systemImage: tornata.locationEnum.isHome ? "house.fill" : "arrow.right.circle.fill")
                                 .font(.caption)
                                 .fontWeight(.medium)
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                                .background(Color.appGray)
+                                .background(Color.gray)
                                 .cornerRadius(8)
                         }
                     }

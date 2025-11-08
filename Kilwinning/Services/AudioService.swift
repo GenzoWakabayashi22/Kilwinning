@@ -21,15 +21,18 @@ class AudioService: ObservableObject {
     // MARK: - Fetch Methods
     
     /// Ottieni tutte le discussioni audio per una tornata
-    func fetchDiscussioni(for tornataId: UUID) async -> [AudioDiscussione] {
-        // Note: This requires mapping UUID to Int IDs from the backend
-        // For now, we'll use mock data filtering
+    func fetchDiscussioni(for tornataId: Int) async -> [AudioDiscussione] {
         if useMockData {
             return discussioni.filter { $0.idTornata == tornataId }
         }
         
-        // TODO: Implement proper ID mapping when backend tornata management is in place
-        return discussioni.filter { $0.idTornata == tornataId }
+        do {
+            let dtos = try await networkService.fetchAudioDiscussioni(tornataId: tornataId)
+            return dtos.map { convertToAudioDiscussione(from: $0) }
+        } catch {
+            print("Error fetching audio discussions from API: \(error). Using mock data.")
+            return discussioni.filter { $0.idTornata == tornataId }
+        }
     }
     
     /// Ottieni tutte le discussioni audio
@@ -68,7 +71,7 @@ class AudioService: ObservableObject {
     private func loadMockData() {
         // Dati di esempio - saranno popolati quando si collegano le tornate
         // Aggiungi alcune discussioni di esempio
-        let tornataId = UUID() // Questo dovrebbe corrispondere a una tornata reale in produzione
+        let tornataId = 1 // Questo dovrebbe corrispondere a una tornata reale in produzione
         
         discussioni = [
             AudioDiscussione(
@@ -99,5 +102,22 @@ class AudioService: ObservableObject {
                 dataUpload: Calendar.current.date(byAdding: .day, value: -4, to: Date())!
             )
         ]
+    }
+    
+    // MARK: - DTO Converters
+    
+    private func convertToAudioDiscussione(from dto: AudioDiscussioneDTO) -> AudioDiscussione {
+        let dateFormatter = ISO8601DateFormatter()
+        let dataUpload = dateFormatter.date(from: dto.data_upload) ?? Date()
+        
+        return AudioDiscussione(
+            id: dto.id,
+            idTornata: dto.id_tornata,
+            fratelloIntervento: dto.fratello_intervento,
+            titoloIntervento: dto.titolo_intervento,
+            durata: dto.durata,
+            audioURL: dto.audio_url,
+            dataUpload: dataUpload
+        )
     }
 }
