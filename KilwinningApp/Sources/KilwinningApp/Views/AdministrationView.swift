@@ -191,6 +191,7 @@ struct AddTornataView: View {
                 }
             }
             .navigationTitle("Nuova Tornata")
+            #if os(iOS)
             .navigationBarItems(
                 leading: Button("Annulla") { dismiss() },
                 trailing: Button("Salva") {
@@ -198,6 +199,19 @@ struct AddTornataView: View {
                 }
                 .disabled(title.isEmpty || introducedBy.isEmpty)
             )
+            #else
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annulla") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Salva") {
+                        saveTornata()
+                    }
+                    .disabled(title.isEmpty || introducedBy.isEmpty)
+                }
+            }
+            #endif
         }
     }
     

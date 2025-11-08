@@ -71,9 +71,19 @@ struct PasswordResetView: View {
                     Spacer()
                 }
             }
+            #if os(iOS)
             .navigationBarItems(trailing: Button("Annulla") {
                 dismiss()
             })
+            #else
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annulla") {
+                        dismiss()
+                    }
+                }
+            }
+            #endif
             .alert("Successo", isPresented: $showSuccess) {
                 Button("OK") {
                     dismiss()

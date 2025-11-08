@@ -284,9 +284,19 @@ struct TavolaDetailView: View {
                 .padding()
             }
             .background(AppTheme.background)
+            #if os(iOS)
             .navigationBarItems(trailing: Button("Chiudi") {
                 dismiss()
             })
+            #else
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Chiudi") {
+                        dismiss()
+                    }
+                }
+            }
+            #endif
         }
     }
 }
