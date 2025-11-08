@@ -2,10 +2,15 @@
 .DS_Store
 .build/
 .swiftpm/
+# Exclude Xcode projects except our main one
 *.xcodeproj
+!KilwinningXcode/Kilwinning.xcodeproj
 *.xcworkspace
 xcuserdata/
 *.xcuserstate
+# But still exclude user-specific files within our project
+KilwinningXcode/Kilwinning.xcodeproj/xcuserdata/
+KilwinningXcode/Kilwinning.xcodeproj/*.xcworkspace
 
 # Swift Package Manager
 /.build
