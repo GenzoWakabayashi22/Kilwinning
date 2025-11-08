@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TornateListView: View {
     @EnvironmentObject var dataService: DataService
+    @EnvironmentObject var authService: AuthenticationService
     @State private var searchText = ""
     
     var filteredTornate: [Tornata] {
@@ -49,10 +50,12 @@ struct TornateListView: View {
                 ScrollView {
                     LazyVStack(spacing: 16) {
                         ForEach(filteredTornate) { tornata in
-                            NavigationLink(destination: TornataDetailView(tornata: tornata, brother: Brother(firstName: "", lastName: "", email: "", degree: .apprendista, role: .none, isAdmin: false))) {
-                                TornataCardModern(tornata: tornata)
+                            if let brother = authService.currentBrother {
+                                NavigationLink(destination: TornataDetailView(tornata: tornata, brother: brother)) {
+                                    TornataCardModern(tornata: tornata)
+                                }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding()

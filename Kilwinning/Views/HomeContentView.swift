@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeContentView: View {
     let brother: Brother
     @EnvironmentObject var dataService: DataService
+    @EnvironmentObject var libraryService: LibraryService
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -41,7 +42,7 @@ struct HomeContentView: View {
                     DashboardCard(
                         title: "Biblioteca",
                         icon: "books.vertical.fill",
-                        count: dataService.libri.count,
+                        count: libraryService.libri.count,
                         gradient: AppTheme.bibliotecaCardGradient,
                         destination: AnyView(BibliotecaView())
                     )
