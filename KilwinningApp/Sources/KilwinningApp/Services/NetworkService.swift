@@ -18,9 +18,10 @@ class NetworkService: ObservableObject {
         AppConstants.API.timeout
     }
 
+    @available(*, deprecated, message: "Usa dependency injection con NetworkService() invece di .shared")
     static let shared = NetworkService()
 
-    private init() {}
+    init() {}
     
     // MARK: - Generic Request Methods
     

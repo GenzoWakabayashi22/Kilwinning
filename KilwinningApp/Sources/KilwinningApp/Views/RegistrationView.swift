@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var authService = AuthenticationService.shared
+    @EnvironmentObject var authService: AuthenticationService
     
     @State private var firstName = ""
     @State private var lastName = ""

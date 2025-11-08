@@ -130,7 +130,7 @@ struct TornateListView: View {
 struct TornataListRow: View {
     let tornata: Tornata
     @ObservedObject var dataService: DataService
-    @StateObject private var authService = AuthenticationService.shared
+    @EnvironmentObject var authService: AuthenticationService
     @State private var showingDetails = false
 
     var presenceStatus: PresenceStatus {

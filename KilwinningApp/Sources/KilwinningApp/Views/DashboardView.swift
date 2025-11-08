@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @StateObject private var authService = AuthenticationService.shared
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var authService: AuthenticationService
+    @EnvironmentObject var dataService: DataService
     @State private var selectedTab = 0
     
     var body: some View {
@@ -108,9 +108,9 @@ struct BrotherHeaderView: View {
 
 struct NavigationTabBar: View {
     @Binding var selectedTab: Int
-    @StateObject private var authService = AuthenticationService.shared
-    @StateObject private var notificationService = NotificationService.shared
-    @StateObject private var chatService = ChatService.shared
+    @EnvironmentObject var authService: AuthenticationService
+    @EnvironmentObject var notificationService: NotificationService
+    @EnvironmentObject var chatService: ChatService
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {

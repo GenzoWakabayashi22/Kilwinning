@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PasswordResetView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var authService = AuthenticationService.shared
+    @EnvironmentObject var authService: AuthenticationService
     
     @State private var email = ""
     @State private var showSuccess = false

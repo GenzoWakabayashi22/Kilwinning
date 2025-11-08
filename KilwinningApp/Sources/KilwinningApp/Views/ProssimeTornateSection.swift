@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProssimeTornateSection: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var upcomingTornate: [Tornata] {
         let now = Date()
@@ -38,7 +38,11 @@ struct ProssimeTornateSection: View {
                 .cardStyle()
             } else {
                 ForEach(upcomingTornate) { tornata in
-                    TornataDetailCard(tornata: tornata, brother: brother)
+                    TornataDetailCard(
+                        tornata: tornata, 
+                        brother: brother,
+                        initialStatus: dataService.getPresenceStatus(brotherId: brother.id, tornataId: tornata.id)
+                    )
                 }
                 
                 // Riepilogo partecipazione
@@ -56,17 +60,14 @@ struct ProssimeTornateSection: View {
 struct TornataDetailCard: View {
     let tornata: Tornata
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     @State private var selectedStatus: PresenceStatus
     
-    init(tornata: Tornata, brother: Brother) {
+    init(tornata: Tornata, brother: Brother, initialStatus: PresenceStatus) {
         self.tornata = tornata
         self.brother = brother
-        _selectedStatus = State(initialValue: DataService.shared.getPresenceStatus(
-            brotherId: brother.id,
-            tornataId: tornata.id
-        ))
+        _selectedStatus = State(initialValue: initialStatus)
     }
     
     var body: some View {
