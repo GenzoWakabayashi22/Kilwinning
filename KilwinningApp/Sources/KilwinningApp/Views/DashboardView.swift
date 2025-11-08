@@ -54,11 +54,11 @@ struct DashboardView: View {
             }
             // macOS-compatible: Use .toolbar(.hidden) instead of .navigationBarHidden (iOS-only)
             // On macOS, toolbar visibility is controlled differently
-            #if os(iOS)
-            .navigationBarHidden(true)
-            #else
-            .toolbar(.hidden, for: .navigationBar)
-            #endif
+#if os(iOS)
+.navigationBarHidden(true)
+#else
+.toolbar(.hidden)
+#endif
         }
     }
 }
