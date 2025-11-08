@@ -25,9 +25,9 @@ class AuthenticationService: ObservableObject {
         // Simulazione chiamata API
         // TODO: Implementare chiamata reale a backend o CloudKit
         try await Task.sleep(nanoseconds: 1_000_000_000)
-        
+
         // Per ora, login demo
-        if email.lowercased() == "demo@kilwinning.it" && password == "demo123" {
+        if email.lowercased() == AppConstants.Demo.email && password == AppConstants.Demo.password {
             let brother = Brother(
                 firstName: "Paolo Giulio",
                 lastName: "Gazzano",

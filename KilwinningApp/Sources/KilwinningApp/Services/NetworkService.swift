@@ -3,19 +3,23 @@ import Foundation
 /// Network service for making HTTP requests to the backend API
 @MainActor
 class NetworkService: ObservableObject {
-    
+
     // MARK: - Configuration
-    
+
     private var apiBaseURL: String {
         // Check for Config.plist first, fallback to default
         if let url = getConfigValue(for: "API_BASE_URL") {
             return url
         }
-        return "https://loggiakilwinning.com/api/"
+        return AppConstants.API.baseURL
     }
-    
+
+    private var timeout: TimeInterval {
+        AppConstants.API.timeout
+    }
+
     static let shared = NetworkService()
-    
+
     private init() {}
     
     // MARK: - Generic Request Methods
@@ -23,38 +27,42 @@ class NetworkService: ObservableObject {
     /// Perform a GET request
     func get<T: Decodable>(endpoint: String, queryParams: [String: String]? = nil) async throws -> T {
         var urlString = apiBaseURL + endpoint
-        
+
         // Add query parameters
         if let params = queryParams, !params.isEmpty {
             let queryString = params.map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? $0.value)" }
                 .joined(separator: "&")
             urlString += "?" + queryString
         }
-        
+
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.timeoutInterval = timeout
+
         let (data, response) = try await URLSession.shared.data(for: request)
-        
+
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }
-        
+
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.httpError(statusCode: httpResponse.statusCode)
         }
-        
+
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             return try decoder.decode(T.self, from: data)
         } catch {
-            print("Decoding error: \(error)")
+            print("❌ Decoding error for \(T.self): \(error.localizedDescription)")
+            if let decodingError = error as? DecodingError {
+                print("   Details: \(decodingError.detailedDescription)")
+            }
             throw NetworkError.decodingError(error)
         }
     }
@@ -64,35 +72,40 @@ class NetworkService: ObservableObject {
         guard let url = URL(string: apiBaseURL + endpoint) else {
             throw NetworkError.invalidURL
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.timeoutInterval = timeout
+
         do {
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
             request.httpBody = try encoder.encode(body)
         } catch {
+            print("❌ Encoding error for \(T.self): \(error.localizedDescription)")
             throw NetworkError.encodingError(error)
         }
-        
+
         let (data, response) = try await URLSession.shared.data(for: request)
-        
+
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }
-        
+
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.httpError(statusCode: httpResponse.statusCode)
         }
-        
+
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             return try decoder.decode(R.self, from: data)
         } catch {
-            print("Decoding error: \(error)")
+            print("❌ Decoding error for \(R.self): \(error.localizedDescription)")
+            if let decodingError = error as? DecodingError {
+                print("   Details: \(decodingError.detailedDescription)")
+            }
             throw NetworkError.decodingError(error)
         }
     }
@@ -100,28 +113,29 @@ class NetworkService: ObservableObject {
     /// Perform a DELETE request
     func delete(endpoint: String, queryParams: [String: String]? = nil) async throws {
         var urlString = apiBaseURL + endpoint
-        
+
         // Add query parameters
         if let params = queryParams, !params.isEmpty {
             let queryString = params.map { "\($0.key)=\($0.value)" }
                 .joined(separator: "&")
             urlString += "?" + queryString
         }
-        
+
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.timeoutInterval = timeout
+
         let (_, response) = try await URLSession.shared.data(for: request)
-        
+
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }
-        
+
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.httpError(statusCode: httpResponse.statusCode)
         }
@@ -258,7 +272,9 @@ enum NetworkError: LocalizedError {
     case decodingError(Error)
     case encodingError(Error)
     case noData
-    
+    case offline
+    case timeout
+
     var errorDescription: String? {
         switch self {
         case .invalidURL:
@@ -266,13 +282,59 @@ enum NetworkError: LocalizedError {
         case .invalidResponse:
             return "Risposta del server non valida"
         case .httpError(let statusCode):
-            return "Errore HTTP: \(statusCode)"
+            return httpErrorMessage(for: statusCode)
         case .decodingError(let error):
             return "Errore di decodifica: \(error.localizedDescription)"
         case .encodingError(let error):
             return "Errore di codifica: \(error.localizedDescription)"
         case .noData:
             return "Nessun dato ricevuto"
+        case .offline:
+            return "Connessione internet assente. Verifica la tua connessione e riprova."
+        case .timeout:
+            return "Tempo di attesa scaduto. Il server non risponde."
+        }
+    }
+
+    /// Messaggi user-friendly per codici HTTP specifici
+    private func httpErrorMessage(for statusCode: Int) -> String {
+        switch statusCode {
+        case 400:
+            return "Richiesta non valida (400)"
+        case 401:
+            return "Autenticazione richiesta. Effettua nuovamente il login."
+        case 403:
+            return "Accesso negato. Non hai i permessi necessari."
+        case 404:
+            return "Risorsa non trovata (404)"
+        case 500:
+            return "Errore del server (500). Riprova più tardi."
+        case 502:
+            return "Server non raggiungibile (502). Riprova più tardi."
+        case 503:
+            return "Servizio non disponibile (503). Riprova più tardi."
+        default:
+            return "Errore di rete (\(statusCode))"
+        }
+    }
+}
+
+// MARK: - DecodingError Extension
+
+extension DecodingError {
+    /// Descrizione dettagliata dell'errore di decodifica
+    var detailedDescription: String {
+        switch self {
+        case .keyNotFound(let key, let context):
+            return "Chiave '\(key.stringValue)' non trovata in \(context.debugDescription)"
+        case .typeMismatch(let type, let context):
+            return "Tipo '\(type)' non corrisponde in \(context.debugDescription)"
+        case .valueNotFound(let type, let context):
+            return "Valore di tipo '\(type)' non trovato in \(context.debugDescription)"
+        case .dataCorrupted(let context):
+            return "Dati corrotti: \(context.debugDescription)"
+        @unknown default:
+            return "Errore di decodifica sconosciuto"
         }
     }
 }
