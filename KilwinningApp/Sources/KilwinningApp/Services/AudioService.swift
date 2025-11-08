@@ -2,7 +2,6 @@ import Foundation
 import Combine
 
 /// Servizio per la gestione delle discussioni audio
-@MainActor
 class AudioService: ObservableObject {
     @Published var discussioni: [AudioDiscussione] = []
     
