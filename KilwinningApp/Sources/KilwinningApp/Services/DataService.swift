@@ -93,14 +93,13 @@ class DataService: ObservableObject {
         
         // Calcola presenze consecutive
         let consecutive = calculateConsecutivePresences(for: brotherId)
-        
+
         return PresenceStatistics(
             totalTornate: yearTornate.count,
             presences: presentCount,
             absences: absentCount,
             consecutivePresences: consecutive,
-            personalRecord: consecutive,
-            attendanceRate: 0
+            personalRecord: consecutive
         )
     }
     
