@@ -56,10 +56,8 @@ struct RegistrationView: View {
                                     .foregroundColor(AppTheme.masonicBlue)
                                 TextField("Email", text: $email)
                                     .textContentType(.emailAddress)
-                                    // macOS-compatible: .textInputAutocapitalization instead of .autocapitalization
-                                    .textInputAutocapitalization(.never)
-                                    // iOS-only modifier: keyboardType not available on macOS
                                     #if os(iOS)
+                                    .textInputAutocapitalization(.never)
                                     .keyboardType(.emailAddress)
                                     #endif
                                     .textFieldStyle(CustomTextFieldStyle())
