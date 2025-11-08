@@ -12,9 +12,11 @@ class AudioService: ObservableObject {
     private let networkService: NetworkService
     private var useMockData = false
     
-    init(networkService: NetworkService = NetworkService()) {
+    nonisolated init(networkService: NetworkService = NetworkService()) {
         self.networkService = networkService
-        loadMockData()
+        MainActor.assumeIsolated {
+            loadMockData()
+        }
     }
     
     // MARK: - Fetch Methods

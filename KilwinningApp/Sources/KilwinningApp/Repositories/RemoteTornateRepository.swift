@@ -1,13 +1,12 @@
 import Foundation
 
 /// Implementazione remota del repository delle tornate che usa NetworkService
-@MainActor
-class RemoteTornateRepository: TornateRepositoryProtocol {
+final class RemoteTornateRepository: TornateRepositoryProtocol, @unchecked Sendable {
 
     private let networkService: NetworkService
 
     init(networkService: NetworkService? = nil) {
-        // Usa NetworkService.shared se non fornito, ma nel contesto MainActor corretto
+        // Usa NetworkService.shared se non fornito
         self.networkService = networkService ?? NetworkService.shared
     }
 
