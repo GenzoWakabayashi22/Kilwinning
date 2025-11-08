@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct InformazioniLoggiaSection: View {
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {

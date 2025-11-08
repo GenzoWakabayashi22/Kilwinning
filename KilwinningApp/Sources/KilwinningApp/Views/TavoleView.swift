@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TavoleView: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     @State private var selectedYear = Calendar.current.component(.year, from: Date())
     @State private var showingAddTavola = false
     
@@ -167,7 +167,8 @@ struct TavolaRow: View {
 struct TavolaDetailView: View {
     @Environment(\.dismiss) var dismiss
     let tavola: Tavola
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
+    @EnvironmentObject var authService: AuthenticationService
     @State private var showingPDF = false
     @State private var showingTornata = false
     
@@ -255,7 +256,7 @@ struct TavolaDetailView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         .sheet(isPresented: $showingTornata) {
-                            if let brother = AuthenticationService.shared.currentBrother {
+                            if let brother = authService.currentBrother {
                                 TornataDetailView(tornata: tornata, brother: brother)
                             }
                         }

@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Vista delle notifiche
 struct NotificheView: View {
-    @StateObject private var notificationService = NotificationService.shared
+    @EnvironmentObject var notificationService: NotificationService
     @State private var showOnlyUnread = false
     
     var filteredNotifiche: [Notification] {
@@ -108,7 +108,7 @@ struct NotificheView: View {
 /// Riga per ogni notifica
 struct NotificaRow: View {
     let notifica: Notification
-    @StateObject private var notificationService = NotificationService.shared
+    @EnvironmentObject var notificationService: NotificationService
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {

@@ -3,7 +3,7 @@ import SwiftUI
 /// Vista per gestire i prestiti del fratello
 struct MieiPrestitiView: View {
     @EnvironmentObject var authService: AuthenticationService
-    @StateObject private var libraryService = LibraryService.shared
+    @EnvironmentObject var libraryService: LibraryService
     
     var prestiti: [Prestito] {
         guard let brotherId = authService.currentBrother?.id else { return [] }
@@ -103,7 +103,7 @@ struct PrestitoCard: View {
     let prestito: Prestito
     let isAttivo: Bool
     
-    @StateObject private var libraryService = LibraryService.shared
+    @EnvironmentObject var libraryService: LibraryService
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var isLoading = false
@@ -240,5 +240,6 @@ struct PrestitoCard: View {
 
 #Preview {
     MieiPrestitiView()
-        .environmentObject(AuthenticationService.shared)
+        .environmentObject(AuthenticationService())
+        .environmentObject(LibraryService())
 }

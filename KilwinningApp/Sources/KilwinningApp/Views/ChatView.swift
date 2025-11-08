@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Vista principale della chat
 struct ChatView: View {
-    @StateObject private var chatService = ChatService.shared
+    @EnvironmentObject var chatService: ChatService
     @EnvironmentObject var authService: AuthenticationService
     @State private var selectedChat: ChatRoom? = nil
     
@@ -150,7 +150,7 @@ struct ChatRoomRow: View {
 struct ChatConversationView: View {
     let chat: ChatRoom
     @EnvironmentObject var authService: AuthenticationService
-    @StateObject private var chatService = ChatService.shared
+    @EnvironmentObject var chatService: ChatService
     
     @State private var messaggi: [MessaggioChat] = []
     @State private var newMessage = ""
@@ -326,7 +326,8 @@ struct MessageBubble: View {
 
 #Preview {
     ChatView()
-        .environmentObject(AuthenticationService.shared)
+        .environmentObject(AuthenticationService())
+        .environmentObject(ChatService())
 }
 
 #Preview("Conversation") {
@@ -335,5 +336,6 @@ struct MessageBubble: View {
         titolo: "Loggia Kilwinning",
         tipo: .gruppo
     ))
-    .environmentObject(AuthenticationService.shared)
+    .environmentObject(AuthenticationService())
+    .environmentObject(ChatService())
 }

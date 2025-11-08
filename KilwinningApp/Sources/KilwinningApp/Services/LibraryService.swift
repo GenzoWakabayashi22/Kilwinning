@@ -7,11 +7,14 @@ class LibraryService: ObservableObject {
     @Published var libri: [Libro] = []
     @Published var prestiti: [Prestito] = []
     
+    @available(*, deprecated, message: "Usa dependency injection con LibraryService() invece di .shared")
     static let shared = LibraryService()
-    private let networkService = NetworkService.shared
+    
+    private let networkService: NetworkService
     private var useMockData = false
     
-    private init() {
+    init(networkService: NetworkService = NetworkService()) {
+        self.networkService = networkService
         loadMockData()
     }
     

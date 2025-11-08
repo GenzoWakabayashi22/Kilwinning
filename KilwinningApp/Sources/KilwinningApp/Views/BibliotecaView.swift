@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Vista principale della biblioteca
 struct BibliotecaView: View {
-    @StateObject private var libraryService = LibraryService.shared
+    @EnvironmentObject var libraryService: LibraryService
     @EnvironmentObject var authService: AuthenticationService
     
     @State private var searchText = ""
@@ -224,7 +224,7 @@ struct LibroCard: View {
 struct LibroDetailView: View {
     let libro: Libro
     @EnvironmentObject var authService: AuthenticationService
-    @StateObject private var libraryService = LibraryService.shared
+    @EnvironmentObject var libraryService: LibraryService
     @Environment(\.dismiss) private var dismiss
     
     @State private var showingAlert = false
@@ -391,7 +391,7 @@ struct LibroDetailView: View {
 /// Vista per aggiungere un nuovo libro
 struct AddLibroView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var libraryService = LibraryService.shared
+    @EnvironmentObject var libraryService: LibraryService
     
     @State private var titolo = ""
     @State private var autore = ""
@@ -485,5 +485,6 @@ struct FilterChip: View {
 
 #Preview {
     BibliotecaView()
-        .environmentObject(AuthenticationService.shared)
+        .environmentObject(AuthenticationService())
+        .environmentObject(LibraryService())
 }

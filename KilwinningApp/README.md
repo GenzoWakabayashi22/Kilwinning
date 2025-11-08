@@ -109,17 +109,34 @@ swift build
 swift test
 ```
 
-### Creazione Xcode Project
+### Apertura del Progetto
 
-Per aprire il progetto in Xcode:
+Questo progetto usa **Swift Package Manager** (SPM) e non ha un file `.xcodeproj` alla root.
 
+#### Opzione 1: Aprire con Xcode (Consigliato)
 ```bash
-# Genera il progetto Xcode
-swift package generate-xcodeproj
-
-# Oppure apri direttamente il package
+# Apri direttamente il Package.swift con Xcode
 open Package.swift
 ```
+
+Xcode riconoscerà automaticamente il progetto Swift Package e lo aprirà correttamente.
+
+#### Opzione 2: Doppio click su Package.swift
+Dal Finder, fai doppio click sul file `Package.swift` e Xcode lo aprirà automaticamente.
+
+#### Opzione 3: Aprire da Xcode
+1. Apri Xcode
+2. File → Open...
+3. Seleziona il file `Package.swift` o la cartella `KilwinningApp`
+
+#### Opzione 4: Generare un progetto Xcode (deprecato)
+```bash
+# Nota: swift package generate-xcodeproj è deprecato in Swift 5.9+
+# Usa invece una delle opzioni sopra
+swift package generate-xcodeproj
+```
+
+**Nota**: Il comando `generate-xcodeproj` è deprecato nelle versioni recenti di Swift. Xcode può aprire direttamente i Swift Package.
 
 ## 📱 Utilizzo
 

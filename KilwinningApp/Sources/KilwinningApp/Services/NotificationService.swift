@@ -10,9 +10,10 @@ class NotificationService: ObservableObject {
     @Published var notifiche: [Notification] = []
     @Published var nonLette: Int = 0
     
+    @available(*, deprecated, message: "Usa dependency injection con NotificationService() invece di .shared")
     static let shared = NotificationService()
     
-    private init() {
+    init() {
         loadMockData()
         calculateNonLette()
     }

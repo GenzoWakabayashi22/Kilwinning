@@ -6,11 +6,14 @@ import Combine
 class AudioService: ObservableObject {
     @Published var discussioni: [AudioDiscussione] = []
     
+    @available(*, deprecated, message: "Usa dependency injection con AudioService() invece di .shared")
     static let shared = AudioService()
-    private let networkService = NetworkService.shared
+    
+    private let networkService: NetworkService
     private var useMockData = false
     
-    private init() {
+    init(networkService: NetworkService = NetworkService()) {
+        self.networkService = networkService
         loadMockData()
     }
     

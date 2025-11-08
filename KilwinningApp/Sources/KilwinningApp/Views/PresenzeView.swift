@@ -3,7 +3,7 @@ import Charts
 
 struct PresenzeView: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     @State private var selectedYear = Calendar.current.component(.year, from: Date())
     
     var statistics: PresenceStatistics {
@@ -219,7 +219,7 @@ struct SimpleBarChart: View {
 struct RecentTornateCard: View {
     let tornate: [Tornata]
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

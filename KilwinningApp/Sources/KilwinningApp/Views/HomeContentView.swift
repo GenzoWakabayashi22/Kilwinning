@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeContentView: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var body: some View {
         VStack(spacing: 20) {
@@ -64,7 +64,7 @@ struct GradoRuoloCard: View {
 
 struct StatistichePresenzeCard: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var statistics: PresenceStatistics {
         let currentYear = Calendar.current.component(.year, from: Date())
@@ -115,7 +115,7 @@ struct StatistichePresenzeCard: View {
 
 struct TornatePartecipateCard: View {
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var recentTornate: [Tornata] {
         let currentYear = Calendar.current.component(.year, from: Date())
@@ -161,7 +161,7 @@ struct TornatePartecipateCard: View {
 struct TornataRowCompact: View {
     let tornata: Tornata
     let brother: Brother
-    @StateObject private var dataService = DataService.shared
+    @EnvironmentObject var dataService: DataService
     
     var presenceStatus: PresenceStatus {
         dataService.getPresenceStatus(brotherId: brother.id, tornataId: tornata.id)

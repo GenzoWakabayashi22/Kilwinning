@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var authService = AuthenticationService.shared
+    @EnvironmentObject var authService: AuthenticationService
     
     @State private var firstName = ""
     @State private var lastName = ""
@@ -56,10 +56,8 @@ struct RegistrationView: View {
                                     .foregroundColor(AppTheme.masonicBlue)
                                 TextField("Email", text: $email)
                                     .textContentType(.emailAddress)
-                                    // macOS-compatible: .textInputAutocapitalization instead of .autocapitalization
-                                    .textInputAutocapitalization(.never)
-                                    // iOS-only modifier: keyboardType not available on macOS
                                     #if os(iOS)
+                                    .textInputAutocapitalization(.never)
                                     .keyboardType(.emailAddress)
                                     #endif
                                     .textFieldStyle(CustomTextFieldStyle())

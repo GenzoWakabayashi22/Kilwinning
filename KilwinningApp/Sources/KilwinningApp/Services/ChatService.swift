@@ -7,11 +7,14 @@ class ChatService: ObservableObject {
     @Published var chatRooms: [ChatRoom] = []
     @Published var messaggi: [MessaggioChat] = []
     
+    @available(*, deprecated, message: "Usa dependency injection con ChatService() invece di .shared")
     static let shared = ChatService()
-    private let networkService = NetworkService.shared
+    
+    private let networkService: NetworkService
     private var useMockData = false
     
-    private init() {
+    init(networkService: NetworkService = NetworkService()) {
+        self.networkService = networkService
         loadMockData()
     }
     

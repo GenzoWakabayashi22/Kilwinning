@@ -5,8 +5,8 @@ struct TornataDetailView: View {
     let tornata: Tornata
     let brother: Brother
     
-    @StateObject private var dataService = DataService.shared
-    @StateObject private var audioService = AudioService.shared
+    @EnvironmentObject var dataService: DataService
+    @EnvironmentObject var audioService: AudioService
     @Environment(\.dismiss) private var dismiss
     
     @State private var presenceStatus: PresenceStatus = .nonConfermato

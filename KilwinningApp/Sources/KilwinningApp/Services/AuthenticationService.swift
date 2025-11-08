@@ -9,10 +9,11 @@ class AuthenticationService: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
-    // Singleton
+    // Singleton (deprecated - use dependency injection)
+    @available(*, deprecated, message: "Usa dependency injection con AuthenticationService() invece di .shared")
     static let shared = AuthenticationService()
     
-    private init() {
+    init() {
         // Verifica se c'è una sessione salvata
         loadSavedSession()
     }
