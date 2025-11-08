@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42AEFBAE01D2DFD981F7DA7D"
+               BlueprintIdentifier = "PLACEHOLDER_TARGET_ID"
                BuildableName = "Kilwinning.app"
                BlueprintName = "Kilwinning"
                ReferencedContainer = "container:Kilwinning.xcodeproj">
@@ -27,8 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,7 +42,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "TARGET_ID"
+            BlueprintIdentifier = "PLACEHOLDER_TARGET_ID"
             BuildableName = "Kilwinning.app"
             BlueprintName = "Kilwinning"
             ReferencedContainer = "container:Kilwinning.xcodeproj">
@@ -61,7 +59,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "TARGET_ID"
+            BlueprintIdentifier = "PLACEHOLDER_TARGET_ID"
             BuildableName = "Kilwinning.app"
             BlueprintName = "Kilwinning"
             ReferencedContainer = "container:Kilwinning.xcodeproj">
