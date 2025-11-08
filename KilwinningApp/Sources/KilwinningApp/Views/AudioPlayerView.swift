@@ -90,7 +90,9 @@ struct AudioPlayerView: View {
             player.loadAudio(from: audioURL)
         }
         .onDisappear {
-            player.stop()
+            Task { @MainActor in
+                player.stop()
+            }
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -194,7 +196,13 @@ class AudioPlayerViewModel: ObservableObject {
     }
     
     deinit {
-        stop()
+        // Cleanup sincrono senza modificare proprietà @Published
+        #if canImport(AVFoundation)
+        player?.pause()
+        if let observer = timeObserver {
+            player?.removeTimeObserver(observer)
+        }
+        #endif
     }
 }
 
