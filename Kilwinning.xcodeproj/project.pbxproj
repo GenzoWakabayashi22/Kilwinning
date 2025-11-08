@@ -44,6 +44,7 @@
 		C029BC2F742C4DDC9C816256 /* MockPresenzeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1D0C0AB54240DCA018D743 /* MockPresenzeRepository.swift */; };
 		C6522B6896BA4EB68C825FB8 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E86C4615442A8A907A505 /* AudioPlayerView.swift */; };
 		C99C2918E2854C38A5A810D6 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58C75B7D404DA399F83593 /* NotificationService.swift */; };
+		CED951C32EBF7A150075F854 /* Color+AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED951C22EBF7A0F0075F854 /* Color+AppTheme.swift */; };
 		E32DD112EB01466EABA7AD23 /* TavoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A746011172454EF5A9A5329C /* TavoleView.swift */; };
 		E5CC2A6E278147E182933623 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD6DD8E6D742178A7D15CD /* DashboardView.swift */; };
 		E8811188293A451C8FC0C820 /* BibliotecaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CECFE93914DEDA4A08B3D /* BibliotecaView.swift */; };
@@ -92,6 +93,7 @@
 		C20F8186AFE043FAB549AF09 /* Presence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
 		CA318E1961364117B67BF95D /* MieiPrestitiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MieiPrestitiView.swift; sourceTree = "<group>"; };
 		CA4CD732F7024450BD405A30 /* LibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryService.swift; sourceTree = "<group>"; };
+		CED951C22EBF7A0F0075F854 /* Color+AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppTheme.swift"; sourceTree = "<group>"; };
 		E486B4C388334B4795042276 /* AdministrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrationView.swift; sourceTree = "<group>"; };
 		E68F07172BE146D2801BD608 /* Tavola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tavola.swift; sourceTree = "<group>"; };
 		E80E86C4615442A8A907A505 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		AEB54CDA00C540E199549732 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CED951C22EBF7A0F0075F854 /* Color+AppTheme.swift */,
 				07459409AFF9469CB2A38F8F /* AppTheme.swift */,
 				58AB0789F12E4B57B2BAA9A8 /* CommonViews.swift */,
 			);
@@ -317,6 +320,7 @@
 				9E0340B3E8D54A3B9CB55E5E /* AudioService.swift in Sources */,
 				18D4B31796534951938BE46A /* AuthenticationService.swift in Sources */,
 				F1037D9A03054F89A807FD7D /* ChatService.swift in Sources */,
+				CED951C32EBF7A150075F854 /* Color+AppTheme.swift in Sources */,
 				60969C748DC44783BBD0AA64 /* DataService.swift in Sources */,
 				0EAC5A79DF30435AB2B3A319 /* LibraryService.swift in Sources */,
 				B33B1DD1BFA749D6A6768736 /* NetworkService.swift in Sources */,
