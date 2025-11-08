@@ -49,7 +49,7 @@ struct TornataDetailView: View {
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                                .background(Color.systemGray)
+                                .background(Color.appGray)
                                 .cornerRadius(8)
                         }
                     }
@@ -85,7 +85,7 @@ struct TornataDetailView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.primary)
                                     .padding()
-                                    .background(Color.systemGray6)
+                                    .background(Color.appSecondaryBackground)
                                     .cornerRadius(8)
                             }
                         }
@@ -265,7 +265,7 @@ struct AudioDiscussioneRow: View {
                 .foregroundColor(.gray)
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color.appSecondaryBackground)
         .cornerRadius(12)
     }
 }

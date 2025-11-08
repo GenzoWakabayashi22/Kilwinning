@@ -35,7 +35,7 @@ struct ChatView: View {
                 }
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color.appBackground)
             
             Divider()
             
@@ -132,7 +132,7 @@ struct ChatRoomRow: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 12)
-        .background(Color.systemBackground)
+        .background(Color.appBackground)
     }
 }
 
@@ -177,7 +177,7 @@ struct ChatConversationView: View {
                         .textFieldStyle(.plain)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(Color.systemGray6)
+                        .background(Color.appSecondaryBackground)
                         .cornerRadius(20)
                         .lineLimit(1...5)
                     
@@ -189,7 +189,7 @@ struct ChatConversationView: View {
                     .disabled(newMessage.isEmpty)
                 }
                 .padding()
-                .background(Color.systemBackground)
+                .background(Color.appBackground)
             }
             .navigationTitle(chat.titolo)
             // Platform-specific navigation bar display mode (iOS only)
@@ -264,7 +264,7 @@ struct MessageBubble: View {
                     .foregroundColor(isCurrentUser ? .white : .primary)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
-                    .background(isCurrentUser ? AppTheme.masonicBlue : Color.systemGray6)
+                    .background(isCurrentUser ? AppTheme.masonicBlue : Color.appSecondaryBackground)
                     .cornerRadius(18)
                 
                 HStack(spacing: 4) {

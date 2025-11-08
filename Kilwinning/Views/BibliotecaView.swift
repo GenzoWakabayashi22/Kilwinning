@@ -68,7 +68,7 @@ struct BibliotecaView: View {
                     }
                 }
                 .padding(12)
-                .background(Color.systemGray6)
+                .background(Color.appSecondaryBackground)
                 .cornerRadius(10)
                 
                 // Filtri
@@ -104,7 +104,7 @@ struct BibliotecaView: View {
                 }
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color.appBackground)
             
             Divider()
             
@@ -459,7 +459,7 @@ struct FilterChip: View {
                 .foregroundColor(isSelected ? .white : AppTheme.masonicBlue)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                .background(isSelected ? AppTheme.masonicBlue : Color.systemGray6)
+                .background(isSelected ? AppTheme.masonicBlue : Color.appSecondaryBackground)
                 .cornerRadius(16)
         }
     }
