@@ -7,6 +7,26 @@ struct LoginView: View {
     @State private var showingRegistration = false
     @State private var showingPasswordReset = false
     @State private var showError = false
+    @State private var hasAttemptedLogin = false
+
+    // MARK: - Computed Properties per Validazione
+
+    /// Verifica se l'email è valida usando regex
+    private var isValidEmail: Bool {
+        let emailRegex = AppConstants.Validation.emailRegex
+        let predicate = NSPredicate(format: "SELF MATCHES[c] %@", emailRegex)
+        return predicate.evaluate(with: email)
+    }
+
+    /// Verifica se la password rispetta i requisiti minimi
+    private var isValidPassword: Bool {
+        password.count >= AppConstants.Validation.minPasswordLength
+    }
+
+    /// Verifica se il form è valido per l'invio
+    private var isFormValid: Bool {
+        isValidEmail && isValidPassword
+    }
     
     var body: some View {
         ZStack {
@@ -43,37 +63,70 @@ struct LoginView: View {
                 // Form di login
                 VStack(spacing: 20) {
                     VStack(spacing: 15) {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .foregroundColor(AppTheme.masonicBlue)
-                                .frame(width: 25)
-                            TextField("Email o nome utente", text: $email)
-                                .textContentType(.emailAddress)
-                                // iOS-only modifiers: autocapitalization and keyboardType not available on macOS
-                                #if os(iOS)
-                                .autocapitalization(.none)
-                                .keyboardType(.emailAddress)
-                                #endif
+                        // Campo Email con validazione
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundColor(AppTheme.masonicBlue)
+                                    .frame(width: 25)
+                                TextField("Email o nome utente", text: $email)
+                                    .textContentType(.emailAddress)
+                                    // iOS-only modifiers: autocapitalization and keyboardType not available on macOS
+                                    #if os(iOS)
+                                    .autocapitalization(.none)
+                                    .keyboardType(.emailAddress)
+                                    #endif
+                            }
+                            .padding()
+                            .background(AppTheme.white)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(hasAttemptedLogin && !isValidEmail && !email.isEmpty ? Color.red : Color.clear, lineWidth: 2)
+                            )
+
+                            // Messaggio di errore email
+                            if hasAttemptedLogin && !isValidEmail && !email.isEmpty {
+                                Text("Inserisci un'email valida")
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                                    .padding(.leading, 10)
+                            }
                         }
-                        .padding()
-                        .background(AppTheme.white)
-                        .cornerRadius(10)
-                        
-                        HStack {
-                            Image(systemName: "lock.fill")
-                                .foregroundColor(AppTheme.masonicBlue)
-                                .frame(width: 25)
-                            SecureField("Password", text: $password)
-                                .textContentType(.password)
+
+                        // Campo Password con validazione
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                    .foregroundColor(AppTheme.masonicBlue)
+                                    .frame(width: 25)
+                                SecureField("Password", text: $password)
+                                    .textContentType(.password)
+                            }
+                            .padding()
+                            .background(AppTheme.white)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(hasAttemptedLogin && !isValidPassword && !password.isEmpty ? Color.red : Color.clear, lineWidth: 2)
+                            )
+
+                            // Messaggio di errore password
+                            if hasAttemptedLogin && !isValidPassword && !password.isEmpty {
+                                Text("La password deve contenere almeno \(AppConstants.Validation.minPasswordLength) caratteri")
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                                    .padding(.leading, 10)
+                            }
                         }
-                        .padding()
-                        .background(AppTheme.white)
-                        .cornerRadius(10)
                     }
                     .padding(.horizontal, 30)
                     
                     // Pulsante Accedi
                     Button(action: {
+                        hasAttemptedLogin = true
+                        guard isFormValid else { return }
+
                         Task {
                             do {
                                 try await authService.login(email: email, password: password)
@@ -93,11 +146,11 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(AppTheme.masonicGold)
+                    .background(isFormValid ? AppTheme.masonicGold : AppTheme.masonicGold.opacity(0.5))
                     .foregroundColor(AppTheme.white)
                     .cornerRadius(10)
                     .padding(.horizontal, 30)
-                    .disabled(authService.isLoading)
+                    .disabled(authService.isLoading || !isFormValid)
                     
                     // Link password dimenticata
                     Button("Password dimenticata?") {

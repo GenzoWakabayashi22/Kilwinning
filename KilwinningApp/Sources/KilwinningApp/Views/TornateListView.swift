@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct TornateListView: View {
-    @StateObject private var dataService = DataService.shared
+    @StateObject private var dataService = DataService()
     @State private var selectedYear = Calendar.current.component(.year, from: Date())
     @State private var selectedType: TornataType?
     @State private var showingAddTornata = false
-    
+
     var filteredTornate: [Tornata] {
         dataService.tornate
             .filter { tornata in
@@ -15,7 +15,7 @@ struct TornateListView: View {
             }
             .sorted { $0.date > $1.date }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             // Header con filtri
@@ -71,8 +71,43 @@ struct TornateListView: View {
                 }
             }
             
-            // Lista tornate
-            if filteredTornate.isEmpty {
+            // Lista tornate con loading state
+            if dataService.isLoading {
+                VStack {
+                    ProgressView("Caricamento tornate...")
+                        .progressViewStyle(CircularProgressViewStyle(tint: AppTheme.masonicBlue))
+                        .padding()
+                }
+                .frame(maxWidth: .infinity)
+                .cardStyle()
+            } else if let errorMessage = dataService.errorMessage {
+                VStack(spacing: 12) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+
+                    Text(errorMessage)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+
+                    Button(action: {
+                        Task {
+                            await dataService.fetchTornate()
+                        }
+                    }) {
+                        Label("Riprova", systemImage: "arrow.clockwise")
+                            .font(.subheadline)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(AppTheme.masonicBlue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                }
+                .padding()
+                .cardStyle()
+            } else if filteredTornate.isEmpty {
                 EmptyStateView(
                     icon: "calendar.badge.exclamationmark",
                     message: "Nessuna tornata trovata"
@@ -84,6 +119,10 @@ struct TornateListView: View {
                     TornataListRow(tornata: tornata)
                 }
             }
+        }
+        .task {
+            // Carica le tornate all'avvio della view
+            await dataService.fetchTornate()
         }
     }
 }
