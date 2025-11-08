@@ -1,4 +1,5 @@
 // swift-tools-version: 5.9
+
 import PackageDescription
 
 let package = Package(
@@ -8,17 +9,21 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        .library(
+        .executable(
             name: "KilwinningApp",
-            targets: ["KilwinningApp"]),
+            targets: ["KilwinningApp"]
+        )
     ],
-    dependencies: [],
     targets: [
-        .target(
+        .executableTarget(
             name: "KilwinningApp",
-            dependencies: []),
+            path: "Sources",
+        
+        ),
         .testTarget(
             name: "KilwinningAppTests",
-            dependencies: ["KilwinningApp"]),
+            dependencies: ["KilwinningApp"],
+            path: "Tests"
+        )
     ]
 )
