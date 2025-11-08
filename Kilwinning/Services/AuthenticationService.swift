@@ -18,7 +18,7 @@ class AuthenticationService: ObservableObject {
         loadSavedSession()
     }
     
-    /// Login con email e password
+    /// Login con username/email e password
     func login(email: String, password: String) async throws {
         isLoading = true
         errorMessage = nil
@@ -27,12 +27,29 @@ class AuthenticationService: ObservableObject {
         // TODO: Implementare chiamata reale a backend o CloudKit
         try await Task.sleep(nanoseconds: 1_000_000_000)
 
-        // Per ora, login demo
-        if email.lowercased() == AppConstants.Demo.email && password == AppConstants.Demo.password {
+        // Credenziali semplificate
+        let username = email.lowercased()
+        
+        // Utente di prova
+        if username == "prova" && password == "prova123" {
+            let brother = Brother(
+                firstName: "Fratello",
+                lastName: "Prova",
+                email: "prova@kilwinning.it",
+                degree: .maestro,
+                role: .none,
+                isAdmin: false
+            )
+            currentBrother = brother
+            isAuthenticated = true
+            saveSession(brother: brother)
+        }
+        // Utente admin
+        else if username == "admin" && password == "admin123" {
             let brother = Brother(
                 firstName: "Paolo Giulio",
                 lastName: "Gazzano",
-                email: email,
+                email: "admin@kilwinning.it",
                 degree: .maestro,
                 role: .venerabileMaestro,
                 isAdmin: true
@@ -40,32 +57,51 @@ class AuthenticationService: ObservableObject {
             currentBrother = brother
             isAuthenticated = true
             saveSession(brother: brother)
-        } else {
+        }
+        // Manteniamo compatibilità con vecchie credenziali demo
+        else if username == AppConstants.Demo.email && password == AppConstants.Demo.password {
+            let brother = Brother(
+                firstName: "Fratello",
+                lastName: "Prova",
+                email: "prova@kilwinning.it",
+                degree: .maestro,
+                role: .none,
+                isAdmin: false
+            )
+            currentBrother = brother
+            isAuthenticated = true
+            saveSession(brother: brother)
+        }
+        else {
             throw AuthError.invalidCredentials
         }
         
         isLoading = false
     }
     
-    /// Registrazione nuovo fratello
-    func register(firstName: String, lastName: String, email: String, password: String) async throws {
+    /// Creazione nuovo fratello - SOLO ADMIN
+    func createUser(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        degree: MasonicDegree,
+        role: InstitutionalRole
+    ) async throws {
+        // Verifica che l'utente corrente sia admin
+        guard let currentBrother = currentBrother, currentBrother.isAdmin else {
+            throw AuthError.unauthorized
+        }
+        
         isLoading = true
         errorMessage = nil
         
         // Simulazione chiamata API
+        // TODO: Implementare chiamata reale a backend per creare utente
         try await Task.sleep(nanoseconds: 1_000_000_000)
         
-        // TODO: Implementare registrazione reale
-        let brother = Brother(
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            degree: .apprendista
-        )
-        
-        currentBrother = brother
-        isAuthenticated = true
-        saveSession(brother: brother)
+        // TODO: Implementare creazione utente reale nel database
+        // Per ora, simuliamo il successo
         
         isLoading = false
     }
@@ -77,18 +113,7 @@ class AuthenticationService: ObservableObject {
         clearSession()
     }
     
-    /// Recupero password
-    func resetPassword(email: String) async throws {
-        isLoading = true
-        errorMessage = nil
-        
-        // Simulazione chiamata API
-        try await Task.sleep(nanoseconds: 1_000_000_000)
-        
-        // TODO: Implementare recupero password reale
-        
-        isLoading = false
-    }
+
     
     // MARK: - Session Management
     
@@ -115,15 +140,18 @@ enum AuthError: LocalizedError {
     case invalidCredentials
     case networkError
     case invalidData
+    case unauthorized
     
     var errorDescription: String? {
         switch self {
         case .invalidCredentials:
-            return "Email o password non validi"
+            return "Username o password non validi"
         case .networkError:
             return "Errore di connessione"
         case .invalidData:
             return "Dati non validi"
+        case .unauthorized:
+            return "Non hai i permessi per eseguire questa operazione"
         }
     }
 }
