@@ -107,9 +107,19 @@ struct RegistrationView: View {
                     }
                 }
             }
+            #if os(iOS)
             .navigationBarItems(trailing: Button("Annulla") {
                 dismiss()
             })
+            #else
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annulla") {
+                        dismiss()
+                    }
+                }
+            }
+            #endif
             .alert("Errore", isPresented: $showError) {
                 Button("OK", role: .cancel) {}
             } message: {
