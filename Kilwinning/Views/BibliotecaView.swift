@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Vista principale della biblioteca con dashboard e catalogo completo
 struct BibliotecaView: View {
-    @EnvironmentObject var bibliotecaService: BibliotecaService
+    @EnvironmentObject var libraryService: LibraryService
     @EnvironmentObject var authService: AuthenticationService
 
     @State private var searchText = ""
@@ -13,11 +13,11 @@ struct BibliotecaView: View {
     @State private var showDashboard = true
 
     var filteredLibri: [Libro] {
-        var libri = bibliotecaService.libri
+        var libri = libraryService.libri
 
         // Applica filtro ricerca
         if !searchText.isEmpty {
-            libri = bibliotecaService.searchLibri(query: searchText)
+            libri = libraryService.searchLibri(query: searchText)
         }
 
         // Applica filtro stato
@@ -113,14 +113,14 @@ struct BibliotecaView: View {
                             }
                         )
 
-                        // Categorie
-                        ForEach(bibliotecaService.categorie, id: \.id) { categoria in
-                            FilterChip(
-                                title: "\(categoria.icona) \(categoria.nome)",
-                                isSelected: selectedCategoria == categoria.nome,
-                                action: { selectedCategoria = categoria.nome }
-                            )
-                        }
+                        // Categorie - TODO: implementare fetchCategorie in LibraryService
+                        // ForEach(libraryService.categorie, id: \.id) { categoria in
+                        //     FilterChip(
+                        //         title: "\(categoria.icona) \(categoria.nome)",
+                        //         isSelected: selectedCategoria == categoria.nome,
+                        //         action: { selectedCategoria = categoria.nome }
+                        //     )
+                        // }
 
                         // Pulsante aggiungi (solo admin)
                         if authService.currentBrother?.isAdmin == true {
@@ -139,7 +139,9 @@ struct BibliotecaView: View {
             Divider()
 
             // Lista libri
-            if bibliotecaService.isLoading {
+            // TODO: implementare isLoading in LibraryService
+            // if libraryService.isLoading {
+            if false {
                 VStack {
                     Spacer()
                     ProgressView("Caricamento...")
@@ -179,30 +181,31 @@ struct BibliotecaView: View {
     }
 
     private func loadData() async {
-        await bibliotecaService.fetchLibri()
-        await bibliotecaService.fetchCategorie()
-        await bibliotecaService.fetchPreferiti()
-        await bibliotecaService.fetchStatistiche()
+        await libraryService.fetchLibri()
+        // TODO: implementare questi metodi in LibraryService
+        // await libraryService.fetchCategorie()
+        // await libraryService.fetchPreferiti()
+        // await libraryService.fetchStatistiche()
     }
 }
 
 /// Dashboard con statistiche biblioteca
 struct BibliotecaDashboard: View {
-    @EnvironmentObject var bibliotecaService: BibliotecaService
+    @EnvironmentObject var libraryService: LibraryService
 
     var body: some View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
                 StatCard(
                     title: "Totale",
-                    value: "\(bibliotecaService.statistiche?.totaleLibri ?? 0)",
+                    value: "\(libraryService.libri.count)",
                     icon: "books.vertical.fill",
                     color: AppTheme.masonicBlue
                 )
 
                 StatCard(
                     title: "Disponibili",
-                    value: "\(bibliotecaService.statistiche?.libriDisponibili ?? 0)",
+                    value: "\(libraryService.libri.filter { $0.stato == .disponibile }.count)",
                     icon: "checkmark.circle.fill",
                     color: .green
                 )
@@ -211,14 +214,14 @@ struct BibliotecaDashboard: View {
             HStack(spacing: 12) {
                 StatCard(
                     title: "In Prestito",
-                    value: "\(bibliotecaService.statistiche?.libriPrestati ?? 0)",
+                    value: "\(libraryService.libri.filter { $0.stato == .inPrestito }.count)",
                     icon: "arrow.right.circle.fill",
                     color: .orange
                 )
 
                 StatCard(
                     title: "I Miei Prestiti",
-                    value: "\(bibliotecaService.mieiPrestiti.filter { $0.stato == .attivo }.count)",
+                    value: "\(libraryService.prestiti.filter { $0.stato == .attivo }.count)",
                     icon: "person.fill",
                     color: AppTheme.masonicGold
                 )
@@ -263,10 +266,12 @@ struct StatCard: View {
 /// Card per visualizzare un libro
 struct LibroCard: View {
     let libro: Libro
-    @EnvironmentObject var bibliotecaService: BibliotecaService
+    @EnvironmentObject var libraryService: LibraryService
 
+    // TODO: implementare preferiti in LibraryService
     var isFavorito: Bool {
-        bibliotecaService.preferiti.contains(libro.id)
+        // libraryService.preferiti.contains(libro.id)
+        false
     }
 
     var body: some View {
@@ -391,5 +396,5 @@ struct FilterChip: View {
 #Preview {
     BibliotecaView()
         .environmentObject(AuthenticationService())
-        .environmentObject(BibliotecaService())
+        .environmentObject(LibraryService())
 }

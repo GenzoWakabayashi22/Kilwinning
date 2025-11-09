@@ -179,8 +179,8 @@ class NetworkService: ObservableObject {
     // MARK: - Library API
     
     /// Fetch all books
-    func fetchLibri(filters: [String: String]? = nil) async throws -> [LibroDTO] {
-        let response: APIResponse<[LibroDTO]> = try await get(
+    func fetchLibri(filters: [String: String]? = nil) async throws -> [LibroResponseDTO] {
+        let response: APIResponse<[LibroResponseDTO]> = try await get(
             endpoint: "libri.php",
             queryParams: filters
         )
@@ -374,7 +374,7 @@ struct PresenzaDTO: Codable {
     let confermato_il: String?
 }
 
-struct LibroDTO: Codable {
+struct LibroResponseDTO: Codable {
     let id: Int
     let titolo: String
     let autore: String

@@ -212,7 +212,7 @@ class LibraryService: ObservableObject {
     
     // MARK: - DTO Converters
     
-    private func convertToLibro(from dto: LibroDTO) -> Libro {
+    private func convertToLibro(from dto: LibroResponseDTO) -> Libro {
         let stato: LibroStato = dto.stato.lowercased().contains("prestito") ? .inPrestito : .disponibile
         
         return Libro(
